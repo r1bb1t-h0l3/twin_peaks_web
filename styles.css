@@ -1,0 +1,123 @@
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+nav a:hover {
+    color: #ff4500 /*red highlight*/
+}
+
+a:hover p {
+    color: #ff4500; /*red highlight for all p elements with an a child*/
+}
+
+.menu-item {
+    display: flex; /*Flexbox for horizontal layout*/
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 50px;
+    /*border-bottom: 1px solid #ccc;  border to separate items*/
+}
+
+.menu-item img {
+    width: 350px;
+    height: auto; /*keep aspect ratio*/
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.description {
+    flex-grow: 2;
+    margin-right: 20px;
+}
+
+.price {
+    font-weight: bold ;
+    font-size: 1.2em; /* slightly larger font for price*/
+}
+/* heading styles for food and drinks sections */
+
+ h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 36px;
+    color: #333;
+ }   
+
+ h3 {
+    font-weight: normal;
+ }
+
+ /*CSS for reservations page*/
+
+ .reservation-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 0 50px;
+    
+ }
+
+ .reservation-item img {
+    width: 600px;
+    height: auto
+      
+ }
+
+ .reservation-text {
+    flex-grow: 2;
+    max-width: 700px;
+    margin-right: 20px;
+    
+ }
+
+    
+/* responsive design for smaller screens*/
+
+@media (max-width: 768px) {
+    .menu-item {
+        flex-direction: column; /* stack columns on top of each other*/
+        align-items: flex-start;
+    }
+
+    .menu-item img {
+        margin-bottom: 10px; /* add spacing betweeen stacked images */
+    }
+
+    .description, .price {
+        margin-right: 0;
+    }
+
+    .reservation-item {
+        flex-direction: column;
+        padding: 20px;
+        align-items: flex-start;
+    }
+
+    .reservation-item img {
+        width: 100%; /* make image fill whole screen on small screens*/
+        margin-top: 20px;
+
+    }
+
+    .reservation-text {
+        margin-right: 0;
+        order: -1;
+    }
+}
