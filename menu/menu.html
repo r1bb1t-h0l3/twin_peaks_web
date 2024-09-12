@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu -- Twin Peaks Diner</title>
+ <style>
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+        }
+
+        nav a:hover {
+            color: #ff4500 /*red highlight*/
+        }
+
+        a:hover p {
+            color: #ff4500; /*red highlight for all p elements with an a child*/
+        }
+
+        .menu-item {
+            display: flex; /*Flexbox for horizontal layout*/
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 50px;
+            /*border-bottom: 1px solid #ccc;  border to separate items*/
+        }
+
+        .menu-item img {
+            width: 350px;
+            height: auto; /*keep aspect ratio*/
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+
+        .description {
+            flex-grow: 2;
+            margin-right: 20px;
+        }
+    
+        .price {
+            font-weight: bold ;
+            font-size: 1.2em; /* slightly larger font for price*/
+        }
+/* heading styles for food and drinks sections */
+        
+         h2 {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 36px;
+            color: #333;
+         }   
+
+         h3 {
+            font-weight: normal;
+         }
+/* responsive design for smaller screens*/
+
+        @media (max-width: 768px) {
+            .menu-item {
+                flex-direction: column; /* stack columns on top of each other*/
+                align-items: flex-start;
+            }
+
+            .menu-item img {
+                margin-bottom: 10px; /* add spacing betweeen stacked images */
+            }
+
+            .description, .price {
+                margin-right: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header with Title and Navigation -->
+    <header>
+        <h1> Our Menu </h1>
+        <nav>
+            <a href="../about_us/about_us.html">about us</a>
+            <a href="../index.html">home</a>
+            <a href="../reservations/reservations.html">reservations</a>
+            <a href="../contact/contact.html">contact</a>
+        </nav>
+        <hr>
+    </header>
+
+    <!--Food section-->
+    <h2>Food</h2>
+
+    <!-- Food Items-->
+    <div class="menu-item">
+        <img src="images/burger.png" alt="Burger">
+        <div class="description">
+            <h3> Black Lodge Burger </h3>
+            <p> <em> dark smoky burger with chargrilled patty and smothered in cheddar. Yes, "smothered". </em> </p>
+        </div>
+        <div class="price">$9.99</div>
+
+    </div>
+
+    <div class="menu-item">
+        <img src="images/chilli.png" alt="Spicy Chilli">
+        <div class="description">
+            <h3> Fire Walk with Me Spicy Chilli  </h3>
+            <p> <em>the slow burn of this  spicy chilli will linger with you like the mysteries of Twin Peaks. </em> </p>
+        </div>
+        <div class="price">$6</div>
+
+    </div>
+
+    <div class="menu-item">
+        <img src="images/donut.png" alt="Glazed Donut">
+        <div class="description">
+            <h3> Sheriff Truman's Classic Glazed Donut </h3>
+            <p> <em> the perfect partner to a cup of hot black joe. </em> </p>
+        </div>
+        <div class="price">$1</div>
+
+    </div>
+
+    <div class="menu-item">
+        <img src="images/pie.jpg" alt="Cherry Pie">
+        <div class="description">
+            <h3> "Damn fine" Cherry Pie</h3>
+            <p> <em> Norma's classic cherry pie recipe. </em> </p>
+        </div>
+        <div class="price">$3.99</div>
+
+    </div>
+
+    <!--Drinks section-->
+    <h2>Drinks</h2>
+
+    <!--Drink Items-->
+    <div class="menu-item">
+        <img src="images/coffee.png" alt="Black Coffee">
+        <div class="description">
+            <h3> Hot black Joe </h3>
+            <p><em> black as midnight on a moonless night. </em></p>
+        </div>
+        <div class="price">$0.99</div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/tea.png" alt="Tea">
+        <div class="description">
+            <h3> Blue Rose Earl Grey </h3>
+            <p><em> elegant, mysterious and a perfect companion for contemplating life... and death.  </em></p>
+        </div>
+        <div class="price">$1.50</div>
+    </div>
+
+    <div class="menu-item">
+        <img src="images/bourbon.png" alt="Bourbon">
+        <div class="description">
+            <h3> Bookhouse Bourbon </h3>
+            <p><em> served on the rocks. Strong and reliable - just like the bookhouse boys. </em></p>
+        </div>
+        <div class="price">$4</div>
+    </div>
+
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Peaks Diner</title>
+    <style>
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+        }
+
+        nav a:hover {
+            color: #ff4500 /*red highlight*/
+        }
+
+        a:hover p {
+            color: #ff4500; /*red highlight for all p elements with an a child*/
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header with Title and Navigation -->
+    <header>
+        <h1> Twin Peaks Diner </h1>
+        <nav>
+            <a href="about_us/about_us.html">about us</a>
+            <a href="menu/menu.html">menu</a>
+            <a href="reservations/reservations.html">reservations</a>
+            <a href="contact/contact.html">contact</a>
+        </nav>
+        <hr>
+    </header>
+    <!-- Main Content with sections in horizontal structure -->
+    <div>
+        <!-- Menu section -->
+        <div style="margin-right: 20px; position: relative; text-align: center;">
+            <a href="menu/menu.html" style="text-decoration: none; color: black">
+                <img src="images/menu.jpg" alt="Menu" width="320">
+                <p>Menu</p>
+            </a>    
+        </div>
+        
+        <!-- Reservation section -->
+        <div style="margin-right: 20px; position: relative; text-align: center;">
+            <a href="reservations/reservations.html" style="text-decoration: none; color: black">
+                <img src="images/reservations.jpg" alt="Reservation" width="320">
+                <p>Reservations</p>
+            </a>    
+        </div>
+
+        <!-- About Us section -->    
+        <div style="margin-right: 20px; position: relative; text-align: center;">
+            <a href="about_us/about_us.html" style="text-decoration: none; color: black">
+                <img src="images/about_us.jpg" alt="About Us" width="320">
+                <p>About Us</p>
+            </a>    
+        </div>
+
+        <!-- Contact section -->
+        <div style="margin-right: 20px; position: relative; text-align: center;">
+            <a href="contact/contact.html" style="text-decoration: none; color: black">
+                <img src="images/contact.jpg" alt="Contact" width="320">
+                <p>Contact</p>
+            </a>   
+        </div>
+    </div>
+</body>
+</html>
