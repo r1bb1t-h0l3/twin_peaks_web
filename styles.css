@@ -26,7 +26,7 @@ a:hover p {
 
 .menu-item {
     display: flex; /*Flexbox for horizontal layout*/
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
     padding: 0 50px;
@@ -66,24 +66,26 @@ a:hover p {
 
  .reservation-item {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 20px;
-    padding: 0 50px;
+    gap: 10px;
     
  }
 
  .reservation-item img {
     width: 600px;
     height: auto
+    
       
  }
 
  .reservation-text {
     flex-grow: 2;
     max-width: 700px;
+    margin-left: 0px;
     margin-right: 20px;
+    padding: 0px;
     
  }
 
