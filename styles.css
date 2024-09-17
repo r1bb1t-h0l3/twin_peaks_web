@@ -3,11 +3,18 @@ header {
     margin-bottom: 20px;
 }
 
+p#title {
+    font: 44px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: underline;
+ }
+
 nav {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
+
 
 nav a {
     margin: 0 15px;
@@ -16,12 +23,13 @@ nav a {
     color: black;
 }
 
-nav a:hover {
-    color: #ff4500 /*red highlight*/
-}
-
 a:hover p {
     color: #ff4500; /*red highlight for all p elements with an a child*/
+}
+
+nav a.active {
+    color: brown;
+    font-weight: bold;
 }
 
 .menu-item {
@@ -68,6 +76,7 @@ a:hover p {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
     margin: 0 auto;
     max-width: 1200px; /* limit max width of container */
@@ -81,12 +90,13 @@ a:hover p {
  }
 
  .reservation-text {
-    flex-grow: 1;
     max-width: 700px;
     margin: 0px;
     padding: 20px;
     
  }
+
+ 
 
     
 /* responsive design for smaller screens*/
