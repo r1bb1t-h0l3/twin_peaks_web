@@ -23,6 +23,7 @@ nav a {
     color: black;
 }
 
+
 a:hover p {
     color: #ff4500; /*red highlight for all p elements with an a child*/
 }
@@ -31,6 +32,49 @@ nav a.active {
     color: brown;
     font-weight: bold;
 }
+
+.navbar {
+    display: flex;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.nav-item {
+    font-size: 1rem;
+    color: #333;
+    text-decoration: none;
+    padding: 5px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+    font-size: 1.05rem;
+    color: red;
+}
+
+.index-menu {/* styling for clickabe index menu items in column on front page*/
+    margin-right: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.index-image-link {
+    display: inline-block;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hover-effect-image {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    filter: grayscale(40%)
+}
+
+.index-image-link:hover .hover-effect-image{
+    transform: scale(1.1);
+    filter: grayscale(0%)
+}
+
 
 .menu-item {
     display: flex; /*Flexbox for horizontal layout*/
