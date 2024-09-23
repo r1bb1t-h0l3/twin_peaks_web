@@ -1,49 +1,103 @@
-html {box-sizing: border-box; font-size: 100%;}
+html {
+    box-sizing: border-box; 
+    font-size: 100%;
+    padding: 0.1rem;
+    min-width: 320px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
 *, *:before, *:after {box-sizing: inherit}
 
-header { font-size: 4.5em; color: lightblue;}
+a.nav-header {
+    text-decoration: none;
+    color: blue;
+}
 
-nav {font-size: 1.5em; padding: 0.65em;display: flex;justify-content: space-around; background-color: lightblue;}
+a.nav-header:hover {
+    color: darkblue;
+}
 
-section { font-size: 1.4em;}
-
-section h1 {font-size: 1.79em;color: lightblue;}
-
-p {line-height: 1.5;}
-
-.container {
-    background-color: wheat;
-    font-size: 2rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+nav.header-nav {
+    background-color: blue;
+    width: 100%;
     text-align: center;
-    border: solid 2px brown;
-    padding: 10px 0px;
-
 }
 
-.item {
-    padding: 10px;
+ul.header-nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+a.header-nav {
+    text-decoration: none;
+    display: block;
     color: white;
-    padding-top: 60px;
-    border-radius: 30px;
 }
 
-.container-flex {
-    display: flex; /*declare a flex container*/   
+@media (max-width: 850px) {
+    header.nav-header { text-align: center;}
 }
+    a.nav-header {font-size: 2.3rem;}
 
-.color1 {background-color: red; }
-.color2 {background-color: green; }
-.color3 {background-color: blue;}
-.color4 {background-color: indigo;}
-.color5 {background-color: violet;}
-.color6 {background-color: darkslategray;}
+    label#menu {display: none}
 
-@media (max-width: 480px) {
-    html {font-size: .65em}
-}
+    nav.header-nav {display: block}
 
-@media (min-width: 780px) {
-    p {line-height:1.6}
+    ul.header-nav {background-color: blue;}
+
+    a.header-nav {
+        font-size: 1.1rem;
+        line-height: 2.33333;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+        a.header-nav:hover {background-color: deepskyblue;}
+
+    }
+
+
+@media (min-width: 851px) {
+    div.header-nav {display: block; 
+        background-color: white;}
+
+    header.nav-header {
+        display: block;
+        padding: 1rem 0;
+        width: 100%;
+        background-color: white;
+        color: blue;
+        text-align: center;
+    }
+    
+    a.nav-header {
+        font-size: 2.8rem;
+        color: blue;
+        background-color: white;
+    }
+
+    nav.header-nav {
+        display: block;
+        height: 3.5rem;
+    }
+
+    ul.header-nav {
+        background-color: blue;
+        max-width: 1300px;
+    }
+
+    ul.header-nav li {
+        display: inline-block;
+    }
+
+    a.header-nav {font-size: 1.4rem;
+    line-height: 2.916667;
+    line-height: 2.5;
+    padding: 0.1rem;
+    }
+
+    a.header-nav:hover {
+        background-color: deepskyblue;
+    }
+
 }

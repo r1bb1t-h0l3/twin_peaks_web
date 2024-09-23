@@ -1,62 +1,57 @@
+html {box-sizing: border-box; font-size: 100%;}
+*, *:before, *:after {box-sizing: inherit}
+
 header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-p#title {
-    font: 44px; 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration: underline;
- }
-
-nav {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-}
-
-
-a:hover p {
-    color: #ff4500; /*red highlight for all p elements with an a child*/
-}
-
-nav a.active {
-    color: brown;
-    font-weight: bold;
-}
-
 .navbar {
     display: flex;
-    background-color: #f4f4f4;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; 
+    height: 60px;
     overflow: hidden;
+}
+
+.navbar .active {
+    display: inline-block;
+    color: brown;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid brown;
 }
 
 .nav-item {
     font-size: 1rem;
     color: #333;
     text-decoration: none;
-    padding: 5px;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 100px;   
 }
 
 .nav-item:hover {
     font-size: 1.05rem;
-    color: red;
+    color: red;  
 }
 
 .index-menu {/* styling for clickabe index menu items in column on front page*/
     margin-right: 20px;
     position: relative;
     text-align: center;
+}
+
+.index-menu a{
+    color: black;
+    text-decoration: none;
+}
+
+.index-menu a:hover {
+    color: red;
 }
 
 .index-image-link {
@@ -103,6 +98,48 @@ nav a.active {
 }
 /* heading styles for food and drinks sections */
 
+.shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.shop-item {
+    background-color: whitesmoke;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 15px;
+    max-width: 30%;
+    text-align: center;
+}
+
+.shop-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.shop-item h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.shop-item .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
+}
+
+.shop-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
  h2 {
     text-align: center;
     margin-top: 40px;
@@ -116,7 +153,7 @@ nav a.active {
 
  /*CSS for reservations page*/
 
- .reservation-item {
+ .two-column-container-item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,13 +164,13 @@ nav a.active {
     padding: 20px; /*add padding around container*/
  }
 
- .reservation-item img {
+ .two-column-container-item img {
     max-width: 100%;
     width: 600px;
     height: auto;
  }
 
- .reservation-text {
+ .two-column-container-text {
     max-width: 700px;
     margin: 0px;
     padding: 20px;
