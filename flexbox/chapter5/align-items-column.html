@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Align items: columns</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            background-color: wheat;
+            font-size: 70px;
+            font-family: arial;
+            font-weight: bold;
+            width: 900px;
+            height:400px;
+            margin: 15px 0px 25px 0px;
+            text-align:center;
+            border: solid 1px brown;
+            padding:0 0;
+        }
+
+        .item {
+            padding-top: 15px;
+            color: white;
+            border-radius: 10px;
+        }       
+
+        .color1 {background-color: red;}
+        .color2 {background-color: green;}
+        .color3 {background-color: blue;}
+        .color4 {background-color: indigo;}
+        .color5 {background-color: violet;} 
+        .color6 {background-color: darkslategray;}
+
+        .container-flex {
+            display: inline-flex;
+            flex-direction: column; /* Items go top to bottom in a column */
+        }
+    </style>
+
+    <table style="margin:10px; width:1800px; text-align:center; font-weight:normal;">
+        <thead>
+            <tr style="color: black; font-size: 4.5rem; ">
+                <th>flex-start</th>
+                <th>&nbsp;</th>
+                <th>flex-end</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width:47%;">
+                    <div class="container container-flex" style="align-items:flex-start; width: 100%;">
+                        <span class="item color1" style="height:30%; width:30%;">1</span>
+                        <span class="item color2" style="height:30%; width:50%;">2</span>
+                        <span class="item color3" style="height:30%; width:70%;">3</span>
+                    </div>
+                </td>
+                <td style="width:6%;">&nbsp;</td>
+                <td style="width:47%;">
+                    <div class="container container-flex" style="align-items:flex-end; width: 100%;">
+                        <span class="item color1" style="height:30%; width:30%;">1</span>
+                        <span class="item color2" style="height:30%; width:50%;">2</span>
+                        <span class="item color3" style="height:30%; width:70%;">3</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin:10px; width:1800px; text-align:center; font-weight:bold;">
+        <thead>
+            <tr style="color: black; font-size: 4.5rem; ">
+                <th>center</th>
+                <th>&nbsp;</th>
+                <th>stretch</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width:47%;">
+                    <div class="container container-flex" style="align-items:center; width: 100%;">
+                        <span class="item color1" style="height:30%; width:30%;">1</span>
+                        <span class="item color2" style="height:30%; width:50%;">2</span>
+                        <span class="item color3" style="height:30%; width:70%;">3</span>
+                    </div>
+                </td>
+                <td style="width:6%;">&nbsp;</td>
+                <td style="width:47%;">
+                    <div class="container container-flex" style="align-items:stretch; width: 100%;">
+                        <span class="item color1" style="height:30%; ">1</span>
+                        <span class="item color2" style="height:30%; ">2</span>
+                        <span class="item color3" style="height:30%; ">3</span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

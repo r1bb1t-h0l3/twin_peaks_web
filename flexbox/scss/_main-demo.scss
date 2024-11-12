@@ -1,0 +1,33 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   Styles for the main content component of the web page template - template.html.
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+div.main-info { width: 100%; }
+
+div.row1, div.row2, div.row3 {
+    margin: 0rem auto; max-width: 980px; padding:0; 
+}
+
+div.block1, div.block2, div.block3, div.block4, div.block5, div.block6 {
+    margin: .5rem; padding:1rem; text-align: center; font-size: 1.5rem; color: white; 
+}
+
+div.block1 { background-color: red; }
+div.block2 { background-color: blue; }
+div.block3 { background-color: darkblue; }
+div.block4 { background-color: limegreen; }
+div.block5 { background-color: forestgreen; }
+div.block6 { background-color: lightseagreen; }
+div.block6 { background-color: lightseagreen; }
+
+/* Row 1: Enhanced 
+.flexbox.flexwrap { 
+    div.row1 { display:flex; justify-content:center; flex-wrap:wrap; }
+    div.block1 { flex:1 1 200px;}
+    } */
+
+/* Rows 2 and 3: Enhanced */
+.flexbox.flexwrap { 
+    div.row2, div.row3 { display:flex; flex-wrap:wrap; }
+    div.block2, div.block3, div.block4, div.block5, div.block6 { flex:1 0 300px;}
+}

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <title>Flex property</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            background-color: wheat;
+            font-size: 60px;
+            font-family: arial;
+            font-weight: bold;
+            margin-right: 40px;
+            text-align: center;
+            border: solid 2px brown;
+        }
+
+        .item {
+            padding: 10px;
+            color: white;
+            border-radius: 15px;
+            height: 120px;
+            padding-top: 30px;
+        }
+
+        .color1 {background-color: red;}
+        .color2 {background-color: green;}
+        .color3 {background-color: blue;}
+        .color4 {background-color: indigo;}
+        .color5 {background-color: violet;} 
+        .color6 {background-color: darkslategray;}
+
+        .container-flex {
+            display: flex;
+        }
+    </style>
+
+    
+
+        <br /><br />
+
+        <div class="container container-flex" style="width: 800px;">
+            <span class="item color1" style="width: 200px; flex: 0 0 auto;">1</span>     <!-- equivalent to flex: none; -->
+            <span class="item color2" style="width: 200px; flex: 1 1 auto;">2</span>     <!-- equivalent to flex: auto; -->
+            <span class="item color3" style="width: 200px; flex: 0 2 auto;">3</span>     <!-- equivalent to flex: initial; -->
+            <span class="item color4" style="width: 200px; flex: 2 0 auto;">4</span>     
+        </div>
+
+        <br /><br />
+
+        <div class="container container-flex" style="width: 600px;">
+            <span class="item color1" style="width: 200px; flex: 0 0 auto;">1</span>     <!-- equivalent to flex: none; -->
+            <span class="item color2" style="width: 200px; flex: 1 1 auto;">2</span>     <!-- equivalent to flex: auto; -->
+            <span class="item color3" style="width: 200px; flex: 0 2 auto;">3</span>     <!-- equivalent to flex: initial; -->
+            <span class="item color4" style="width: 200px; flex: 2 0 auto;">4</span>       
+        </div>
+
+        <br /><br />
+
+        <div class="container container-flex" style="width: 1200px;">
+            <span class="item color1" style="width: 200px; flex: 0 0 auto;">1</span>     <!-- equivalent to flex: none; -->
+            <span class="item color2" style="width: 200px; flex: 1 1 auto;">2</span>     <!-- equivalent to flex: auto; -->
+            <span class="item color3" style="width: 200px; flex: 0 2 auto;">3</span>     <!-- equivalent to flex: initial; -->
+            <span class="item color4" style="width: 200px; flex: 2 0 auto;">4</span>         
+        </div>
+
+    
+
+</body>
+</html>

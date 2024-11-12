@@ -1,0 +1,11 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   These statements implement the advanced checkbox hack, described by Tim Pietrusky at http://timpietrusky.com/advanced-checkbox-hack.
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+body { 
+  -webkit-animation: bugfix infinite 1s; 
+}
+@-webkit-keyframes bugfix { 
+  from {padding:0;} 
+  to {padding:0;} 
+}

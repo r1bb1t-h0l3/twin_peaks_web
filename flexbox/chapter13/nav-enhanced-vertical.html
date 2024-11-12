@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Vertical Navigation: Enhanced</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <!-- Source: http://codepen.io/team/css-tricks/pen/YqaKYR -->
+    <style>
+        html { box-sizing: border-box; font-size: 100%; padding: 0 1rem; min-width: 320px; font-family: Arial; line-height: 1.5; }
+
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body { webkit-animation: bugfix infinite 1s; padding: 0; margin: 0; width: 100%; }
+
+        @-webkit-keyframes bugfix {
+            from { padding: 0; }
+
+            to { padding: 0; }
+        }
+
+        header { font-family: 'Adobe Heiti Std'; font-size: 2.5rem; text-align: center; color:blue; }
+
+        input#nav { display: none; }
+
+        label#menu { display: none; }
+
+        nav { background-color: blue; width: 100%; display: block; text-align: center; }
+
+        ul.nav { list-style: none; margin: 0; background-color: blue; padding: 0; }
+
+            ul.nav a { text-decoration: none; display: block; padding: 1rem; color: white; }
+
+                ul.nav a:hover { background-color: #00b7f5; }
+
+        /* Small screen: Basic  */
+        @media (max-width: 550px) {
+
+            #header-wrapper { display: block; margin-top: 1rem; }
+
+            header { font-size: 2rem; }
+
+            ul.nav a { border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+            ul.nav li:last-of-type a { border-bottom: none; }
+        }
+
+        /* Small screen: Enhanced  */
+        @media (max-width: 550px) {
+
+            .flexbox.flexwrap #header-wrapper { display: flex; flex-wrap: wrap; }
+            .flexbox.flexwrap header { flex: 1 1 auto; width: auto; background: blue; color: white; line-height: 1.5; }
+            .flexbox.flexwrap label#menu { display: block; flex: 0 0 100px; background-color: blue; color: white; font-size: 1.5rem; line-height: 2.333333; padding: 0 1rem; text-align: center; cursor: pointer; }
+            .flexbox.flexwrap label#menu:hover { background-color: darkblue; }
+            .flexbox.flexwrap nav.nav { display: none; }
+            .flexbox.flexwrap nav.nav ul { background-color: #00b7f5; }
+            .flexbox.flexwrap ul.nav a:hover { background-color: darkblue; }
+
+            .flexbox.flexwrap input#nav:checked ~ nav.nav { display: block; }
+            .flexbox.flexwrap input#nav:checked ~ label#menu:hover { background-color: #00b7f5; background-color: darkblue; }
+            .flexbox.flexwrap label#menu:after { content: "\25BC"; padding-left: 5px; /* unicode down arrow */ }
+            .flexbox.flexwrap input#nav:checked ~ label:after { content: "\25B2"; /* unicode up arrow */ }
+        }
+
+        /* Medium screen
+        @media (min-width: 501px) and (max-width: 800px) {
+
+            nav { height: 3.5rem; }
+
+            ul.nav li { float: left; }
+
+            ul.nav a { font-size: 1.2rem; line-height: 2.9166667; padding: 0 1rem; }
+        } */
+
+        /* Large screen: Basic */
+        @media (min-width: 551px) {
+
+            nav { height: 3.5rem; }
+
+            ul.nav li, ul.nav a { display: inline-block; }
+
+            ul.nav a { font-size: 1.2rem; line-height: 2.9166667; padding: 0 1rem; }
+        }
+
+        /* Large screen: Enhanced */
+        @media (min-width: 551px) {
+
+            /* Menu items equally spaced 
+            ul.nav {max-width: 80%; margin:0 auto;}
+            .flexbox.flexwrap ul.nav { display:flex; justify-content:space-around; }
+            ul.nav li:last-of-type  { margin:0; } */
+
+            /* One menu item to the right 
+            ul.nav {max-width: 100%; }
+            .flexbox.flexwrap ul.nav { display:flex; justify-content:flex-start; }
+            ul.nav li:last-of-type  { margin-left: auto; } */
+        }
+
+
+    </style>
+
+    <h1>Enhanced Vertical Navigation</h1>
+
+    <div id="header-wrapper">
+
+        <header>Site Name</header>
+        <input type="checkbox" id="nav">
+        <label for="nav" id="menu" onclick>Menu</label>
+
+        <nav class="nav">
+            <ul class="nav">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Products</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <p>Text below menu.</p>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Unstyled Checkbox Hack</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            padding: 0 20px;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Hide the checkbox */
+        input[type=checkbox] { display: none; }
+
+        /* Style the label */
+        label { display: block; }
+
+        /* Style the container */
+        div.collapse { display: none; }
+        input[type=checkbox]:checked ~ div.collapse {
+            display: block;
+        }
+
+    </style>
+
+    <h1>Checkbox Hack</h1>
+
+    <div style="border: 1px solid #000; padding: 20px; width: 900px; font-size: 1.5em;">
+
+        <div style="vertical-align:top; display:inline-block; width: 400px;">
+
+            <div>
+                <input type="checkbox" id="toggle1">
+                <label for="toggle1">Click me!</label>
+                <div class="collapse">
+                    <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+                    <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="vertical-align:top; display:inline-block;  width: 395px;">
+
+            <div>
+                <input type="checkbox" id="toggle2">
+                <label for="toggle2">Click me!</label>
+                <div class="collapse">
+                    <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+                    <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

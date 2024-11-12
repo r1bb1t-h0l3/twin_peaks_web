@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flex-shrink property</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            background-color: wheat;
+            font-size: 60px;
+            font-family: arial;
+            font-weight: bold;
+            width: 80%;
+            margin-right: 40px;
+            text-align: center;
+            border: solid 2px brown;
+        }
+
+        .item {
+            padding: 10px;
+            color: white;
+            border-radius: 15px;
+            height: 180px;
+            padding-top: 60px;
+        }
+
+        .color1 {background-color: red;}
+        .color2 {background-color: green;}
+        .color3 {background-color: blue;}
+        .color4 {background-color: indigo;}
+        .color5 {background-color: violet;} 
+        .color6 {background-color: darkslategray;}
+
+        .container-flex {
+            display: inline-flex;
+        }
+    </style>
+
+    <div style="width:1300px;">
+
+        <br /><br />
+
+        <div class="container container-flex" style="width: 800px;">
+            <span class="item color1" style="flex-basis: 200px; flex-shrink: 1;">1</span>
+            <span class="item color2" style="flex-basis: 200px; flex-shrink: 2;">2</span>
+            <span class="item color3" style="flex-basis: 200px; flex-shrink: 3;">3</span>
+        </div>
+
+        <div class="container container-flex" style="width: 400px;">
+            <span class="item color1" style="flex-basis: 200px; flex-shrink: 0;">1</span>
+            <span class="item color2" style="flex-basis: 200px; flex-shrink: 2;">2</span>
+            <span class="item color3" style="flex-basis: 200px; flex-shrink: 3;">3</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tiny Tweaks</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        h1 {text-align: center; font-family: Arial; font-size: 3em; font-weight:normal;}
+
+        .container {
+            font-family: arial;
+            border: solid 2px brown;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .header, .nav, .main, .ad {
+          padding: 40px;
+          width: 100%;
+          text-align:center;
+          color:white;
+          font-size: 2em;
+        }
+
+        .header {background-color:#007;}
+
+        .nav {background-color:#070;}
+
+        .main {background-color:#700;}
+
+        .ad {background-color: Highlight;}
+
+        @media (min-width: 400px) {
+          .header, .nav, .main, .ad {
+            font-size: 2.5em;
+          }
+        }
+
+        @media (min-width: 700px) {
+          .header, .nav, .main, .ad {
+            font-size: 3em;
+          }
+        }
+    </style>
+
+    <h1>Tiny Tweaks</h1>
+
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="nav">Nav</div>
+        <div class="main">Main</div>
+        <div class="ad">Ad</div>
+    </div>
+
+
+</body>
+</html>

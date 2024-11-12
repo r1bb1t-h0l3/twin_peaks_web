@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tab Switcher With Radio Button Hack</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+</head>
+<body>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            padding: 0 1rem;
+            min-width: 320px;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            webkit-animation: bugfix infinite 1s;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        @-webkit-keyframes bugfix {
+            from {
+                padding: 0;
+            }
+
+            to {
+                padding: 0;
+            }
+        }
+
+        div {padding:0;}
+
+        h1 { font-size: 2rem; line-height: 1.5; margin:.5rem 0;}
+
+        /* Style container for tabs and content */
+        .tabs { position: relative; color: white; font-family: Arial; font-size: 1.5rem; width:40%;}
+
+        /* Style tabs */
+        .tab { float: left; }
+
+        /* Style radio buttons */
+        input[type=radio] { display: none;}
+
+        /* Stable labels */
+        label { display: block; background-color: #555; line-height: 1.5rem; padding: .5rem 1rem; margin-right: .2rem; }
+
+        /* Style label when it is visible */
+        [type=radio]:checked ~ label  {  background-color: blue; }
+
+        /* Style the collapsible content when it is hidden */
+        div.content { position: absolute; top: 2.5rem; left: 0; height: 5rem; width: 100%; opacity: 0; z-index: -1; 
+            background-color: blue; padding: 0 1rem; text-align: left; }
+
+        /* Style the collapsible content when it is visible */
+        [type=radio]:checked ~ label ~ .content {  z-index: 1; opacity: 1; }
+
+        p.under {clear:both; margin-top: 9rem; color: black; font-size: 1.2rem; font-family: Arial;}
+
+    </style>
+
+    <h1>Tab Switcher With Radio Button Hack</h1>
+
+    <div class="tabs">
+
+        <div class="tab">
+
+            <input type="radio" id="Tab1" name="tab-group" checked  />
+            <label for="Tab1" onclick>Tab 1</label>
+            <div class="content">
+                <p>Tab 1 content</p>
+            </div>
+
+        </div>
+
+        <div class="tab">
+
+            <input type="radio" id="Tab2" name="tab-group" />
+            <label for="Tab2" onclick>Tab 2</label>
+            <div class="content">
+                <p>Tab 2 content</p>
+            </div>
+
+        </div>
+
+        <div class="tab">
+
+            <input type="radio" id="Tab3" name="tab-group" />
+            <label for="Tab3" onclick>Tab 3</label>
+            <div class="content">
+                <p>Tab 3 content</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="under"><strong>Note: </strong>This is content beneath the tab switcher. Since tab content is positioned absolutely,
+        it may sit on top of this content. You can use the margin-height property to start this paragraph
+        in a place where it won't be covered by tab content.</p>
+
+
+
+</body>
+</html>

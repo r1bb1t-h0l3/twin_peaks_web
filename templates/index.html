@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Main Content with sections in horizontal structure -->
+    <div>
+        <!-- Menu section -->
+        <div class="index-menu">
+            <a href="{{ url_for('menu') }}" class = "index-image-link">
+                <img src="{{url_for('static', filename='images/menu.jpg')}}" alt="Menu" width="320" class="hover-effect-image">
+                <p>Menu</p>
+            </a>    
+        </div>
+        
+        <!-- Reservation section -->
+        <div class="index-menu">
+            <a href="{{ url_for('reservations') }}" class = "index-image-link">
+                <img src="{{url_for('static', filename='images/reservations.jpg')}}" alt="Reservation" width="320" class="hover-effect-image">
+                <p>Reservations</p>
+            </a>    
+        </div>
+
+        <!-- About Us section -->    
+        <div class="index-menu">
+            <a href="{{ url_for('about_us') }}" class = "index-image-link">
+                <img src="{{url_for('static', filename='images/about_us.jpg')}}" alt="About Us" width="320" class="hover-effect-image">
+                <p>About Us</p>
+            </a>    
+        </div>
+
+        <!-- Contact section -->
+        <div class="index-menu">
+            <a href="{{ url_for('contact') }}" class = "index-image-link">
+                <img src="{{url_for('static', filename='images/contact.jpg')}}" alt="Contact" width="320" class="hover-effect-image">
+                <p>Contact</p>
+            </a>   
+        </div>
+    </div>
+{% endblock %}
+

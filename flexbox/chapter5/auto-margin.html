@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto Margins</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 2em;
+        }
+
+        .container {
+            background-color: wheat;
+            font-size: 3em;
+            font-family: arial;
+            font-weight: bold;
+            width: 900px;
+            height: 300px;
+            margin: 15px 0px 25px 0px;
+            text-align: center;
+            border: solid 1px brown;
+            padding: 0 0;
+        }
+
+        .container-flex {
+            display: flex;
+        }
+
+        .item {
+            padding-top: .9em;
+            color: white;
+            border-radius: 10px;
+            width: 3em;
+            height: 3em;
+            margin: auto;
+        }
+
+        .box1 {background-color: red;}
+
+        .box2 {background-color: green;}
+
+        .box3 { background-color: blue;}
+
+        .box4 {background-color: indigo;}
+
+    </style>
+
+    <h1>Centered Vertically and Horizontally With Auto Margin</h1>
+
+    <style>
+        .x1 { margin: auto; }
+    </style>
+
+    <div class="container container-flex">
+        <span class="item x1 box1">1</span>
+        <span class="item x1 box2">2</span>
+        <span class="item x1 box3">3</span>
+        <span class="item x1 box4">4</span>
+    </div>
+
+    <style>
+        .x2 {margin: auto 0;}
+    </style>
+
+    <h1>Centered Vertically With Auto Margin</h1>
+
+    <div class="container container-flex">
+        <span class="item x2 box1">1</span>
+        <span class="item x2 box2">2</span>
+        <span class="item x2 box3">3</span>
+        <span class="item x2 box4">4</span>
+    </div>
+
+    <style>
+        .box1a {margin: 0;}
+        .box2a { margin: 0; }
+        .box3a { margin: auto 0 0 auto; }
+        .box4a { margin: auto 0 0 0; }
+    </style>
+
+    <h1>Positioned in Corners With Auto Margin</h1>
+
+    <div class="container container-flex">
+        <span class="item x2 box1 box1a">1</span>
+        <span class="item x2 box2 box2a">2</span>
+        <span class="item x2 box3 box3a">3</span>
+        <span class="item x2 box4 box4a">4</span>
+    </div>
+
+    <style>
+        .box1b {
+            margin: auto;
+            
+        }
+
+        .box2b {
+            margin: auto;
+        }
+
+        .box3b {
+            margin: auto ;
+        }
+
+        .box4b {
+            margin: auto;
+        } 
+
+        container-flexA { justify-content: flex-start; align-items: flex-start; }
+    </style>
+
+    <h1>Auto Margin vs Other Alignment Properties</h1>
+
+    <div class="container container-flex containerflexA">
+        <span class="item x2 box1 box1b">1</span>
+        <span class="item x2 box2 box2b">2</span>
+        <span class="item x2 box3 box3b">3</span>
+        <span class="item x2 box4 box4b">4</span>
+    </div>
+
+</body>
+</html>

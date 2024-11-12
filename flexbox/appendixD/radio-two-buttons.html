@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Radio Button Hack: Two Collapsible Buttons</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <style>
+        body {
+            webkit-animation: bugfix infinite 1s;
+        }
+
+        @-webkit-keyframes bugfix {
+            from {
+                padding: 0;
+            }
+
+            to {
+                padding: 0;
+            }
+        }
+
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            padding: 0 20px;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Hide the radio buttons */
+        input[type=radio] {
+            display: none;
+        }
+
+        /* Style the label */
+        label {
+            display: block;
+            padding: 20px;
+            background-color: blue;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            font-family: Arial;
+            width: 620px;
+            border-radius: 10px;
+            margin-top: 1em;
+            text-align: left;
+        }
+
+        input#Button1:not(:checked) + label:after, input#Button2:not(:checked) + label:after {
+            content: "\25BC";  }   /* unicode down arrow */
+
+        input#Button3:not(:checked) + label:after, input#Button4:not(:checked) + label:after {
+            content: "\25BC";  }   /* unicode down arrow */
+
+        span { margin-right:400px; }
+
+        div.Content1, div.Content2, div.Content3, div.Content4 {
+            transition: max-height .5s ease;
+            font-family: Arial;
+            font-size: 1.5em;
+            line-height: 1.5;
+            padding: 10px 15px;
+            width: 620px;
+            display: none;
+        }
+
+        input#Button1:checked ~ div.Content1, input#Button2:checked ~ div.Content2 {
+            display: block;
+        }
+
+        input#Button3:checked ~ div.Content3, input#Button4:checked ~ div.Content4 {
+            display: block;
+        }
+
+        .container { display: inline-block; }
+    </style>
+
+    <h1>Radio Button Hack: Two Collapsible Buttons</h1>
+
+    <div class="container" style="vertical-align:top; margin:2em; margin-right:4em;">
+
+        <input type="radio" id="Button1" name="tab-group" checked>
+        <label id="ButtonLabel1" for="Button1" onclick><span>Button 1</span></label>
+        <div class="Content1">
+            <p>This content appears when you click Button 1.</p>
+            <p>If you click Button 2, this content will disappear and new content will appear under Button 2.</p>
+        </div>
+
+        <input type="radio" id="Button2" name="tab-group">
+        <label id="ButtonLabel2" for="Button2" onclick><span>Button 2</span></label>
+        <div class="Content2">
+            <p>This content appeared when you clicked Button 2.</p>
+            <p>
+                When you clicked Button 2, the content under
+                Button 1 disappeared.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="container" style="vertical-align:top; margin:2em;">
+
+        <input type="radio" id="Button3" name="tab-group2" checked>
+        <label id="ButtonLabel3" for="Button3" onclick><span>Button 1</span></label>
+        <div class="Content3">
+            <p>This content appeared when you clicked Button 1.</p>
+            <p>
+                When you clicked Button 1, the content under
+                Button 2 disappeared.
+            </p>
+        </div>
+
+        <input type="radio" id="Button4" name="tab-group2">
+        <label id="ButtonLabel4" for="Button4" onclick><span>Button 2</span></label>
+        <div class="Content4">
+            <p>This content appeared when you clicked Button 2.</p>
+            <p>
+                When you clicked Button 2, the content under
+                Button 1 disappeared.
+            </p>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

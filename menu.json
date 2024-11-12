@@ -1,0 +1,54 @@
+{
+    "items": [
+       {
+        "category": "Food",
+        "name": "Black Lodge Burger",
+        "description": "dark smoky burger with chargrilled patty and smothered in cheddar. Yes, 'smothered'.",
+        "image": "images/burger.png",
+        "price": "$9.99"
+       },
+       {
+        "category": "Food",
+        "name": "Fire Walk with Me Spicy Chilli",
+        "description": "the slow burn of this  spicy chilli will linger with you like the mysteries of Twin Peaks.",
+        "image": "images/chilli.png",
+        "price": "$6"
+      },
+      {
+        "category": "Food",
+        "name": "Sheriff Truman's Classic Glazed Donut",
+        "description": "The perfect partner to a cup of hot black joe.",
+        "image": "images/donut.png",
+        "price": "$1"
+      },
+      {
+        "category": "Food",
+        "name": "\"Damn fine\" Cherry Pie",
+        "description": "Norma's classic cherry pie recipe.",
+        "image": "images/pie.jpg",
+        "price": "$3.99"
+      },
+      {
+        "category": "Drinks",
+        "name": "Hot Black Joe",
+        "description": "Black as midnight on a moonless night.",
+        "image": "images/coffee.png",
+        "price": "$0.99"
+      },
+      {
+        "category": "Drinks",
+        "name": "Blue Rose Earl Grey",
+        "description": "Elegant, mysterious, and a perfect companion for contemplating life... and death.",
+        "image": "images/tea.png",
+        "price": "$1.50"
+      },
+      {
+        "category": "Drinks",
+        "name": "Bookhouse Bourbon",
+        "description": "served on the rocks. Strong and reliable - just like the bookhouse boys.",
+        "image": "images/bourbon.png",
+        "price": "$4"
+      }
+    ]
+  }
+  

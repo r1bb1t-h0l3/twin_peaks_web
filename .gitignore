@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask cache files
+instance/
+*.db
+*.sqlite3
+
+# Environment variables file
+.env
+
+# Virtual environment folder
+venv/
+.venv/
+env/
+.venv/
+
+# PyCharm project files
+.idea/
+
+# VS Code settings
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# Log files
+logs/
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Static and media files
+static/media/
+
+# Node modules (if using Node.js for frontend)
+node_modules/
+
+# Compiled files
+*.egg-info/
+dist/
+build/
+
+# Python egg files
+*.egg
+
+# Config files
+config.py
+config.json
+
+# Backup files
+*~

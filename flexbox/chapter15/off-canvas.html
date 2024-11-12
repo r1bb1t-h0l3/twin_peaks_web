@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Off Canvas</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        h1 {text-align: center; font-family: arial; font-size: 3em; font-weight:normal;}
+
+        .container {
+            font-family: arial;
+            border: solid 2px brown;
+            background-color: antiquewhite;
+            margin: 1rem auto;
+        }
+
+        .header-wrapper, .nav, .main, .ad {
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 40px;
+            font-size: 2rem;
+        }
+
+        .header-wrapper { 
+            background-color: #007; padding:0;}
+
+        .nav {
+            background-color: #070;
+        }
+
+        .main {
+            background-color: #700;
+        }
+
+        .ad {
+            background-color: #39f;
+        }
+
+        .small-container {
+            width: 100%;
+        }
+
+        @media (max-width: 400px) {
+
+            .header-wrapper { padding:0; }
+
+            .header, .nav, .main, .ad {
+                font-size: 2rem;
+            }
+
+            .header { margin:1rem 0; margin-right: 3rem; display: inline; line-height:3rem;}
+
+            .header-wrapper input { display: inline-block; padding: 40px 0;}
+            .header-wrapper label { display: inline-block; padding: 40px 0;}
+
+            /*Collapsible content displaces existing content */
+            div.nav { display:none; }
+            input[type=checkbox]:checked ~ div.nav { display: block; border:1px solid black; } 
+
+        }
+
+        @media (min-width: 401px) {
+            .header-wrapper { padding:0;}
+
+            .header, .nav, .main, .ad {
+                font-size: 2.5rem;
+                display: block;
+            }
+
+            .header { display:inline-block; line-height: 3rem; padding: 40px;}
+            .header-wrapper input { display: none; }
+            .header-wrapper label { display: none; }
+        }
+
+        .flexbox.flexwrap .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 401px) {
+            .flexbox.flexwrap .nav {
+                width: 100%;
+            }
+
+            .flexbox.flexwrap .small-container {
+                width: 100%;
+                display: flex;
+            }
+
+            .flexbox.flexwrap .main {
+                width: 75%;
+            }
+
+            .flexbox.flexwrap .ad {
+                width: 25%;
+            }
+        }
+
+    </style>
+
+    <h1>Off Canvas</h1>
+
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="header">Header</div>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" onclick>Menu</label>
+            <div class="nav">Nav</div>
+        </div>
+        
+        <div class="small-container">
+            <div class="main">Main</div>
+            <div class="ad">Ad</div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   These statements define styles for the main content on the web page - the section, article, and aside elements.
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   Single-column web page
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+/* General styles for main content */
+.section-1a p, .article-1a p, .aside-1a p { margin: 0 0 1rem 0; }
+
+/* Element-specific styles */
+div.section-wrapper-1a { background-color: white;  }
+section.section-1a { max-width: $max-component-width; padding: 1rem; margin: 0 auto; }
+h1.section-1a { text-align:center; }
+
+div.article-wrapper-1a { background-color: rgb(220,230,242); }
+article.article-1a { max-width: $max-component-width; padding: 1rem; margin: 0 auto; }
+img.one-column { max-width: 50%; height: auto; min-width: 270px; text-align: center; display: block; margin: 1rem auto; }
+
+div.aside-wrapper-1a { background-color: white; }
+aside.aside-1a { max-width: $max-component-width; padding: 1rem; margin: 0 auto; }
+img.book { max-width: 25%; height: auto; min-width: 270px; text-align: center; display: block; margin: 1rem auto; }
+
+/* Small screen: basic */
+@media (max-width: 500px) {
+    .section-wrapper-1a h1 { font-size: 1.4rem; }
+    .section-wrapper-1a h2 { font-size: 1.2rem; }
+    .section-wrapper-1a p { font-size: 1rem; line-height: 1.5; }
+}
+/* Medium screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    .section-wrapper-1a h1 { font-size: 1.5rem; }
+    .section-wrapper-1a h2 { font-size: 1.3rem; }
+    .section-wrapper-1a p { font-size: 1.1rem; line-height: 1.5;}
+}
+/* Large screen: basic */
+@media (min-width: 851px) {
+    .section-wrapper-1a  { font-size: 1.9rem; }
+    .section-wrapper-1a  { font-size: 1.7rem; }
+    .section-wrapper-1a  { font-size: 1.4rem; line-height: 1.6;}
+}
+
+div.button1 { text-align: center; }
+a.button1 { display: inline-block; font-size: 1.2rem; line-height: 1.8rem; margin: 1rem auto; padding: 1rem 2rem; color: white; background-color: $color1; border-radius: .4rem; font-weight: bold; }
+a.button1:hover { text-decoration: none; background-color: $darkest-color1; }
+
+
+
+// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   Two-column web pages
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+/* Element-specific styles */
+section.section-2a p, article.article-2a p { margin: 0 0 1rem 0; }
+div.main-wrapper-2a { background-color: white; width: 100%; }
+h1.section-2a { text-align:center; }
+h2.section-2a { text-align:left;  line-height: 2; }
+p.article-2a { color: white; text-align: center; margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5;}
+
+a.button2 { display: block; margin: 1rem auto; padding: 1rem 2rem; color: white; width: 70%;
+            background-color:forestgreen; border-radius: .4rem; text-align: center; }
+a.button2:hover { text-decoration: none; background-color: $darkest-color1; }
+
+/* Basic styles */
+section.section-2a { max-width: $max-component-width; padding: 1rem; margin: 0 auto; }
+article.article-2a { max-width: 500px; min-width: 300px; background-color:$color1; border: solid #eee 1px; 
+                 padding: 1rem; margin: 0rem auto 1.5rem auto; }
+img.book2 { width: 160px; height: auto; text-align: center; display: block; margin: 1rem auto; }
+
+/* Small screen: basic */
+@media (max-width: 500px) {
+    h1.section-2a { font-size: 1.4rem; }
+    h2.section-2a { font-size: 1.2rem; }
+    p.section-2a { font-size: 1rem; line-height: 1.5; }
+    a.button2 {font-size:1rem;}
+}
+/* Medium screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    h1.section-2a { font-size: 1.5rem; }
+    h2.section-2a { font-size: 1.3rem; }
+    p.section-2a { font-size: 1.1rem; line-height: 1.5;}
+    a.button2 {font-size:1.1rem;}
+}
+/* Large screen: basic */
+@media (min-width: 851px) {
+    h1.section-2a { font-size: 1.8rem; }
+    h2.section-2a { font-size: 1.6rem; }
+    p.section-2a { font-size: 1.2rem; line-height: 1.6;}
+    a.button2 {font-size:1.2rem;}
+}
+
+/* Enhanced */
+.flexbox.flexwrap {
+
+    /* Large screen */
+    @media (min-width: 1100px) {
+        /* Sidebar*/
+        img.book2 { width:100%; margin:0;}
+
+        /* Flexbox */
+        div.main-wrapper-2a { display: flex; justify-content:center; margin:0; }
+        section.section-2a { margin:0; flex: 0 1 800px; }
+        article.article-2a { margin: 1rem; flex: 0 0 300px; order:1; padding:0; display:flex; flex-direction:column; justify-content:space-between;}
+
+
+
+    }
+
+}
+
+// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   Three-column web page 
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+/* Element-specific styles */
+div.main-wrapper-3a { background-color: white; max-width: $max-3-col-wrapper-width; margin:0 auto;}
+section.section-3a p, article.aside-3a p, article.article-3a p { margin: 0 0 1rem 0; }
+h1.section-3a { text-align:center; }
+h2.section-3a { text-align:left;  line-height: 2; }
+p.article-3a, p.feature-3a { color: black; text-align: center; margin-bottom: 1rem; }
+p.feature-3a { color: black; margin-bottom: 1rem; }
+
+a.button3 { display: block; margin: 1rem auto; padding: 1rem ; color: white; width: 60%;
+            background-color:forestgreen; border-radius: .4rem; width: 230px; text-align:center;}
+a.button3:hover { text-decoration: none; background-color: $darkest-color1; }
+
+/* Basic styles */
+section.section-3a { padding: 1rem; margin: 0 auto; }
+p.feature-3a { text-align: center; }
+article.article-3a { background-color: rgb(220,230,242); border: solid #eee 1px; padding: 1rem; margin: 0rem auto 1.5rem auto; } /* book */
+img.book3 { width: 260px; height: auto; text-align: center; display: block; margin: 1rem auto; }
+aside.aside-3a { margin:1rem auto; padding:1rem; background-color: rgb(220,230,242); }
+img.feature-3a { display:block; margin: 1rem auto; max-width: 75%; height: auto; }
+
+/* Small screen: basic */
+@media (max-width: 500px) {
+    h1.section-3a { font-size: 1.4rem; }
+    h2.section-3a { font-size: 1.2rem; }
+    p.section-3a { font-size: 1rem; line-height: 1.5; }
+    p.feature-3a, p.article-3a { font-size: 1.6rem; line-height: 1.5; }
+    a.button3 {font-size:1.4rem; }
+}
+/* Medium screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    h1.section-3a { font-size: 1.5rem; }
+    h2.section-3a { font-size: 1.3rem; }
+    p.section-3a { font-size: 1.1rem; line-height: 1.5;}
+    p.feature-3a, p.article-3a { font-size: 1.8rem; line-height: 1.5; }
+    a.button3 {font-size:1.4rem;}
+}
+/* Large screen: basic */
+@media (min-width: 851px) {
+    h1.section-3a { font-size: 1.8rem; }
+    h2.section-3a { font-size: 1.6rem; }
+    p.section-3a { font-size: 1.2rem; line-height: 1.6;}
+    p.feature-3a, p.article-3a { font-size: 1.8rem; line-height: 1.5; }
+    a.button3 {font-size:1.4rem;}
+}
+
+/* Enhanced */
+
+.flexbox.flexwrap {
+
+    /* Medium screen */
+    @media (min-width: 851px) and (max-width: 1200px) {
+        
+        /* Set width of sidebar elements */
+        img.book3 { width:100%; height:auto; margin:0;}
+        a.button3 {width: 85%; }
+
+        /* Flexbox */
+        div.main-wrapper-3a { display: flex; flex-wrap:wrap; justify-content:space-around;}
+        section.section-3a { margin:0; flex: 0 0 76%; order:-1;}
+        article.article-3a { margin: 1rem 0; flex: 0 0 16%; order:0; padding:0; display: flex; flex-direction:column; justify-content: space-between;  } 
+        aside.aside-3a { flex: 0 0 96%; order: 1;  display:flex; justify-content: space-around; align-items:center;  } 
+
+        img.feature-3a { width: 40%; }
+        p.feature-3a { width: 40%; text-align: left; }
+    }
+
+}
+
+.flexbox.flexwrap {
+
+    /* Large screen */
+    @media (min-width: 1201px) {
+
+         p.article-3a { color: black;}
+         
+         /* Sidebar */
+        img.book3 { width:100%; height: auto; margin-top:0; }
+        a.button3 {width: 70%;}
+
+        /* Flexbox */
+        div.main-wrapper-3a { display: flex; justify-content:center; flex-wrap:nowrap;}
+        aside.aside-3a { margin:1rem; flex: 0 1 300px; order: -1; align-self: flex-start;  }
+        section.section-3a { margin:0; flex: 0 1 800px; }
+        article.article-3a { margin: 1rem; flex: 0 0 250px; order:1; padding:0; display: flex; flex-direction:column; justify-content:space-between; }
+    }
+
+}
+
+
+
+

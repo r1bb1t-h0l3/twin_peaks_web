@@ -1,0 +1,128 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   These statements define styles for the main information section on the home page of the template
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+/* Article 1 - Large screen: basic */
+section.section1 { background-color:white; padding:1rem 0rem 2rem 0rem;}
+article.article1 { background-color:white; padding:1rem 0rem 2rem 0rem; }
+section.section1 { margin:0; }
+div.article1 { margin:0 auto; max-width: $max-component-width;  }
+section.section1 h1, div.article1 h1 { color: black; font-size: 2rem; text-align: center; margin:.5rem 0;}
+section.section1 p, div.article1 p { font-size: 1.2rem; line-height: 1.7; text-align: left; margin:.75rem 0; }
+div.button1 { text-align: center; }
+a.button1 { display: inline-block; font-size: 1.2rem; line-height: 1.8rem; margin: 1rem auto; padding: 1rem 2rem; color: white; background-color: $darkest-color1; border-radius: .4rem; font-weight: bold; }
+a.button1:hover { text-decoration: none; background-color: $color1; }
+
+/* Article 1 - Smaller screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    section.section1 h1, div.article1 h1 { font-size: 1.6rem; }
+    section.section1 p, div.article1 p { font-size: 1.1rem; text-align: left; padding: 0 .25rem;}
+}
+
+/* Article 1 - Smallest screen: basic */
+@media (max-width: 500px) {
+    section.section1 h1, section.section1 h1, div.article1 h1 { font-size: 1.4rem; text-align: center; margin:.3rem 0;}
+    section.section1 p, section.section1 p, div.article1 p { font-size: 1rem; line-height: 1.5; text-align: left; padding: 0 .25rem;}
+    a.button1 { font-size: 1rem; line-height: 1.5rem; }
+}
+
+/* Article 2 - Large screen: basic */
+article.article2 { background-color:lightgray; background-color:beige; background-color:#FAF0E6; background-color:#ADD8E6; padding:1rem 1rem .1rem 1rem; }
+div.article2 { margin:0 auto; max-width: $max-component-width;  }
+div.article2 h1 { color: black; font-size: 2rem; text-align: center; margin:.5rem 0;}
+div.article2 p, div.article2 li { font-size: 1.2rem; line-height: 1.7; text-align: left; margin:.75rem 0; }
+
+/* Article 2 - Smaller screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    div.article2 h1 { font-size: 1.6rem; }
+    div.article2 p, div.article2 li { font-size: 1.1rem; }    
+}
+
+/* Article 2 - Smallest screen: basic */
+@media (max-width: 500px) {
+    div.article2 h1 { font-size: 1.4rem; text-align: center; margin:.3rem 0;}
+    div.article2 p, div.article2 li { font-size: 1rem; line-height: 1.5; }
+    div.article2 p { text-align: left; padding: 0 .25rem;}
+}
+
+/*Article 3 - Large screen: basic */
+article.article3 { background-color:antiquewhite; background-color:#ADD8E6; padding:1rem 1rem 2rem 1rem;  }
+div.article3 { margin:0 auto; max-width: 980px;  }
+div.article3 h1 { color: black; font-size: 2rem; text-align: center; margin:.5rem 0;}
+div.article3 p, div.article3 li { font-size: 1.2rem; line-height: 1.7; }
+div.article3 p { text-align: left; margin:.75rem 0; }
+
+div.article3 div.book-text { vertical-align: top; margin-top: 1rem;}
+img.book { max-width: 100%; width: 300px; display: block; margin: 1rem auto; }
+div.book-description { width: 100%;}
+
+/*Article 3 - Smaller screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    div.article3 h1 { font-size: 1.6rem; }
+    div.article3 p, div.article3 li { font-size: 1.1rem; }    
+}
+
+/*Article 3 - Smallest screen: basic */
+@media (max-width: 500px) {
+    div.article3 h1 { font-size: 1.4rem; text-align: center; margin:.3rem 0;}
+    div.article3 p, div.article3 li { font-size: 1rem; line-height: 1.5; }
+    div.article3 p { text-align: left; padding: 0 .25rem;}
+}
+
+/*Article 3 - Large screen: enhanced */
+@media (min-width: 851px) {
+    .flexbox {
+        div.imgandtext {display: flex; justify-content: center;}
+        a.book { flex:0 1 300px; align-self:center; padding-right: 1rem;}
+        div.book-description {flex: 0 1 800px; align-self:center; padding-left: 1rem;} 
+    }
+}
+
+/*Article 3 - Smaller screen: enhanced */
+@media (min-width: 501px) and (max-width: 850px) {
+    .flexbox {
+        div.imgandtext {display: flex;}
+        a.book { flex:0 0 180px; align-self:center;}
+        div.book-description {flex: 1 1 auto; align-self:center; padding-left: 2rem;} 
+    }
+}
+
+/*Article 3 - Smallest screen: enhanced */
+@media (max-width: 500px) {    
+        div.imgandtext {display: block;}
+        div.book-description {padding-left: 0;} 
+        img.book { max-width: 300px; width: 70%; }    
+}
+
+/*Article 4 - Large screen: basic */
+article.article4 { background-color:white; padding:1rem 1rem 2rem 1rem;  }
+div.article4 { margin:0 auto; max-width: $max-component-width;  }
+div.feature { display: block; padding-bottom: 1rem;}
+div.article4 h2 { color: black; font-size: 2rem; text-align: center; margin:.5rem 0;}
+div.article4 p { font-size: 1.2rem; line-height: 1.7; text-align: center; margin:.75rem 0; color: $darker-color1; color:#111; }
+
+img.feature { max-width: 100%; width: 300px; display: block; margin: 1rem auto; }
+
+/*Article 4 - Mid-size screen: basic */
+@media (min-width: 501px) and (max-width: 850px) {
+    div.article4 h2 { font-size: 1.6rem; }
+    div.article4 p { font-size: 1.1rem; line-height: 1.6; }
+}
+
+/*Article 4 - Small screen: basic */
+@media (max-width: 500px) {
+    div.article4 h2 { font-size: 1.4rem; }
+    div.article4 p { font-size: 1rem; line-height: 1.5; }
+}
+
+/*Article 4 - Large screen: enhanced */
+@media (min-width: 851px) {
+    .flexbox {
+    div.features {display: flex; justify-content: space-between;} 
+    div.feature { margin-left: 2rem; }
+    div.feature:first-child { margin-left: 0; }
+    img.feature { flex: 0 1 auto; }
+    }
+}
+
+

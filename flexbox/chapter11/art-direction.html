@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Art direction</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            font-family: arial;
+            width:100%;
+        }
+
+        .container-flex {
+            display: inline-flex; /* This declares an inline flex container */
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .wrapper {
+           
+            margin: 20px 0;
+            border: solid 2px brown;
+            width: 100%;
+        }
+
+        p {
+            margin: 0 1em 1em 1em;
+        }
+
+        img { max-width: 100%; }
+
+        img.small-image { display: none; }
+        img.big-image { display: inline; }
+
+        @media (max-width: 600px) {
+            img.big-image {
+                display: none;
+            }
+
+            img.small-image {
+                display: inline;
+            }
+        }
+
+    </style>
+
+    <div class="container container-flex ">
+
+        <div class="wrapper">
+            <div style="width:100%; text-align: center;">
+                <img class="small-image" src="/images/lion-320.jpg"  />
+                <img class="big-image" src="/images/lion.jpg"  />
+            </div>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Navigation: All the Code</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <!-- Source: http://codepen.io/team/css-tricks/pen/YqaKYR -->
+    <style>
+        html { box-sizing: border-box; font-size: 100%; padding: 0 1rem; min-width: 320px; font-family: Arial; line-height: 1.5; }
+
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body { webkit-animation: bugfix infinite 1s; padding: 0; margin: 0; width: 100%; }
+
+        @-webkit-keyframes bugfix {
+            from { padding: 0; }
+
+            to { padding: 0; }
+        }
+
+        header { font-family: 'Adobe Heiti Std'; font-size: 2.5rem; text-align: center; color: blue; }
+
+        input { display: none; }
+
+        label { display: none; }
+
+        nav { background-color: blue; width: 100%; display: block; text-align: center; }
+
+        ul { list-style: none; background-color: blue; margin: 0; padding: 0; }
+
+        ul a { text-decoration: none; display: block; padding: 1rem; color: white; }
+
+        ul a:hover { background-color: #00b7f5; }
+
+        /* Small screen: Basic  */
+        @media (max-width: 550px) {
+
+            div { display: block; margin-top: 1rem; }
+
+            header { font-size: 2rem; }
+
+            ul a { border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+            ul li:last-of-type a { border-bottom: none; }
+        }
+
+        /* Small screen: Enhanced  */
+        @media (max-width: 550px) {
+
+            .flexbox.flexwrap div { display: flex; flex-wrap: wrap; }
+            .flexbox.flexwrap header { flex: 1 1 auto; width: auto; background: blue; color: white; line-height: 1.5; }
+            .flexbox.flexwrap label { display: block; flex: 0 0 100px; background-color: blue; color: white; font-size: 1.5rem; line-height: 2.333333; padding: 0 1rem; text-align: center; cursor: pointer; }
+            .flexbox.flexwrap label:hover { background-color: darkblue; }
+            .flexbox.flexwrap nav { display: none; }
+            .flexbox.flexwrap nav ul { background-color: #00b7f5; }
+            .flexbox.flexwrap ul a:hover { background-color: darkblue; }
+
+            .flexbox.flexwrap input:checked ~ nav { display: block; }
+            .flexbox.flexwrap input:checked ~ label:hover { background-color: #00b7f5; background-color: darkblue; }
+            .flexbox.flexwrap label:after { content: "\25BC"; padding-left: 5px; /* unicode down arrow */ }
+            .flexbox.flexwrap input:checked ~ label:after { content: "\25B2"; /* unicode up arrow */ }
+        }
+
+        /* Medium screen
+        @media (min-width: 501px) and (max-width: 800px) {
+
+            nav { height: 3.5rem; }
+
+            ul li { float: left; }
+
+            ul a { font-size: 1.2rem; line-height: 2.9166667; padding: 0 1rem; }
+        } */
+
+        /* Large screen: Basic */
+        @media (min-width: 551px) {
+
+            nav { height: 3.5rem; }
+
+            ul li, ul.nav a { display: inline-block; }
+
+            ul a { font-size: 1.2rem; line-height: 2.9166667; padding: 0 1rem; }
+        }
+
+        /* Large screen: Enhanced */
+        @media (min-width: 551px) {
+
+            /* Menu items equally spaced */
+           .flexbox.flexwrap ul { display:flex; justify-content:space-around; }
+
+            /* One menu item to the right
+            .flexbox.flexwrap ul { display:flex; justify-content:flex-start; }
+            .flexbox.flexwrap ul li:last-of-type { margin-left: auto; } */
+        }
+    </style>
+
+    <h1>Responsive Navigation: All the Code</h1>
+
+    <div>
+
+        <header>Site Name</header>
+        <input type="checkbox" id="nav">
+        <label for="nav" id="menu" onclick>Menu</label>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Products</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <p>Text below menu.</p>
+
+</body>
+</html>

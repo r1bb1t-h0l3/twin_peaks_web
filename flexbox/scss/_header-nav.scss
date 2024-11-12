@@ -1,0 +1,104 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   These statements define the header and navigation style.
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+/* All screens: Common styles */
+a.nav-header { text-decoration: none; color: $color1; }
+a.nav-header:hover { color: $darkest-color1;}
+input#nav { display: none; }
+nav.header-nav { background-color: $color1; width: 100%; text-align: center;}
+ul.header-nav { list-style-type: none; padding: 0; margin: 0 auto; }
+a.header-nav { text-decoration: none; display: block; color: white; }
+
+/* Small and medium screens */
+@media (max-width: 850px) {
+    /* Basic */
+    header.nav-header { text-align: center; }
+    a.nav-header { font-size: 2.3rem; }
+    label#menu { display: none; }
+    nav.header-nav { display: block; }
+    ul.header-nav { background-color: $color1; }
+    a.header-nav { font-size: 1.1rem; line-height: 2.333333; border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
+    a.header-nav:hover { background-color: $lightest-color1; }
+
+    /* Enhanced */
+    .flexbox.flexwrap {
+        /* Checkbox hack */
+        nav.header-nav { display: none; }
+        input#nav:checked ~ nav.header-nav  { display: block; }
+
+        /* Ordinary style rules  */
+        a.nav-header{ color: white; font-size: 1.4rem; line-height: 2.3333333; }  
+        header.nav-header { width: auto; background-color: $color1; color: white; line-height: 2.333333; text-align:left; padding-left: 1.5rem; } 
+        label#menu { display: block; width: auto; background-color: $color1; color: white; font-size: 1.4rem; font-weight: bold; line-height: 2.333333; text-align: center; cursor: pointer; }
+        label#menu:hover { background-color: $darkest-color1; }
+        ul.header-nav { background-color: $lightest-color1; }
+        a.header-nav:hover { background-color: $darkest-color1; } 
+        input#nav:checked ~ label#menu:hover { background-color: $darkest-color1; }
+    }
+}
+
+/* Small screen: Enhanced */
+@media (max-width: 500px) {
+
+    /* Enhanced */
+    .flexbox.flexwrap {
+        /* Flexbox properties */
+        div.header-nav { display: flex; flex-wrap: wrap; } 
+        header.nav-header { flex: 1 1 auto;}
+        label#menu { flex: 0 0 90px; }
+    
+        /* Generated label content*/
+        label#menu:before { content: "\2630"; } /* hamburger icon */
+        input#nav:checked ~ label#menu:before { content: "X"; } /* x icon */
+    }
+
+}
+
+/* Medium screen: */
+@media (min-width: 501px) and (max-width: 850px) {
+
+   /* Enhanced */
+    .flexbox.flexwrap {
+    
+        /* Flexbox properties */
+        div.header-nav { display: flex; flex-wrap: wrap; } 
+        header.nav-header { flex: 1 1 auto;}
+        label#menu { flex: 0 0 140px; font-weight: normal; }
+
+        /* Generated label content*/
+        label#menu:before { content: "Menu \25BC"; } /* unicode down arrow */
+        input#nav:checked ~ label#menu:before { content: "Menu \25B2"; } /* unicode up arrow */
+    }
+} 
+
+/* Large screen: Basic */
+@media (min-width: 851px) {
+    div.header-nav { display: block; background-color: white; }
+    header.nav-header { display: block; padding: 1rem 0; width: 100%; background-color: white; color: $color1; text-align: center;}
+    a.nav-header { font-size: 2.8rem; background-color: white;}
+    label#menu { display:none; }
+    nav.header-nav { display: block; height: 3.5rem;  }
+    ul.header-nav { background-color: $color1; max-width: $max-component-width; }
+    ul.header-nav li { display: inline-block; }
+    a.header-nav { font-size: 1.4rem; line-height: 2.9166667; line-height: 2.5; padding: 0 1rem; }
+    a.header-nav:hover { background-color: $lightest-color1; }
+} 
+
+/* Large screen: Enhanced  */
+@media (min-width: 851px) {
+
+     /* Menu items equally spaced */
+    .flexbox.flexwrap { 
+        ul.header-nav { display:flex; justify-content:space-around; }
+    }
+
+     /* One item to the right
+    .flexbox.flexwrap { 
+        ul.header-nav { display:flex; }
+        ul.header-nav li:last-child { margin-left:auto; }
+    }  */
+     
+}
+
+/* ul li:last-child { background-color: darkblue; } */

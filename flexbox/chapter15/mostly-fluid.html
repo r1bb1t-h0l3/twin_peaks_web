@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Mostly Fluid</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        h1 {text-align: center; font-family: Arial; font-size: 3em; font-weight:normal;}
+
+        .container {
+            font-family: arial;
+            border: solid 2px brown;
+            background-color: antiquewhite;
+            margin: 20px auto;
+        }
+
+        .header, .nav, .main, .ad {
+            padding: 40px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size:2rem;
+        }
+
+        .header {
+            background-color: #007;
+        }
+
+        .nav {
+            background-color: #070;
+        }
+
+        .main {
+            background-color: #700;
+        }
+
+        .ad {
+            background-color: Highlight;
+        }
+
+        @media (min-width: 400px) {
+            .header, .nav, .main, .ad {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .header, .nav, .main, .ad {
+                font-size: 3rem;
+            }
+        }
+
+        .flexbox.flexwrap .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 400px) {
+            .flexbox.flexwrap .nav {
+                width: 40%;
+            }
+
+            .flexbox.flexwrap .main {
+                width: 60%;
+            }
+
+            .flexbox.flexwrap .ad {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .flexbox.flexwrap .nav {
+                width: 25%;
+            }
+
+            .flexbox.flexwrap .main {
+                width: 50%;
+            }
+
+            .flexbox.flexwrap .ad {
+                width: 25%;
+            }
+
+            .container { width: 700px; margin: 0 auto;}
+        }
+
+    </style>
+
+    <h1>Mostly Fluid</h1>
+
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="nav">Nav</div>
+        <div class="main">Main</div>
+        <div class="ad">Ad</div>
+    </div>
+
+
+</body>
+</html>

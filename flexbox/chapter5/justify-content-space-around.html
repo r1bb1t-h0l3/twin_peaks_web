@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Justify-content: space-around</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            background-color: wheat;
+            font-size: 66px;
+            font-family: arial;
+            font-weight: bold;
+            width: 900px;
+            margin: 30px auto;
+            text-align:center;
+            border: solid 1px brown;
+            padding:10px 0;
+        }
+
+        .item {
+            padding: 10px;
+            color: white;
+            border-radius: 50px;
+            height: 200px;
+            min-width: 200px;
+            padding-top:66px;
+        }     
+
+        .color1 {background-color: red;}
+        .color2 {background-color: green;}
+        .color3 {background-color: blue;}
+        .color4 {background-color: indigo;}
+        .color5 {background-color: violet;} 
+        .color6 {background-color: darkslategray;}
+
+        .container-flex {
+            display: flex;
+            justify-content: space-around; /* Identical to center */
+        }
+    </style>
+
+    <div class="container container-flex">
+        <span class="item color1">1</span>
+        <span class="item color2">2</span>
+        <span class="item color3">3</span>
+        <span class="item color4">4</span>
+        <span class="item color5">5</span>
+        <span class="item color6">6</span>
+    </div>
+
+
+</body>
+</html>

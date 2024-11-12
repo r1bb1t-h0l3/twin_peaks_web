@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Align-Self</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body { margin: 2em; }
+
+        .container {
+            background-color: wheat;
+            font-size: 3em;
+            font-family: arial;
+            font-weight: bold;
+            width: 900px;
+            height: 300px;
+            margin: 15px 0px 25px 0px;
+            text-align: center;
+            border: solid 1px brown;
+            padding: 0 0;
+        }
+
+        .container-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+        }
+
+        .item {
+            padding-top: .9em;
+            color: white;
+            border-radius: 10px;
+            width: 3em; height: 3em;
+        }
+
+        .box1 {
+            background-color: red; align-self: center;
+        }
+
+        .box2 {
+            background-color: green; 
+        }
+
+        .box3 {
+            background-color: blue; align-self: flex-end;
+        }
+
+        .box4 {
+            background-color: indigo; align-self: center;
+        }
+    </style>
+
+    <h1>Align-Self</h1>
+
+    <div class="container container-flex">
+        <span class="item box1">1</span>
+        <span class="item box2">2</span>
+        <span class="item box3">3</span>
+        <span class="item box4">4</span>
+    </div>
+
+</body>
+</html>

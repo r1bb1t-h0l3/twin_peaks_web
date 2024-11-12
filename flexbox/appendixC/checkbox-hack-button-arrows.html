@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Hack Button With Arrows</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            padding: 10px;
+            min-width: 320px;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Hide the checkbox */
+        input[type=checkbox] {
+            display: none;
+        }
+
+        /* Style the label */
+        label {
+            font-family: Arial;
+            font-size: 1.2em;
+            background-color: blue;
+            color: white;
+            padding: .7em 2em;
+            border-radius: .5em;
+            cursor: pointer;
+            background-color: blue;
+        }
+
+        label:hover {
+            background-color: red;
+        }
+
+
+        label:after {
+            content: "\25BC"; /* unicode down arrow */
+            padding-left: 250px;
+        }
+
+        input[type=checkbox]:checked ~ label:after {
+            content: "\25B2"; /* unicode up arrow */
+        }
+
+        /* Style the container */
+        div.collapse {
+            display: none;
+            background-colorx: antiquewhite;
+            borderx: 1px solid black;
+            padding: 10px;
+            min-width: 260px;
+        }
+
+        input[type=checkbox]:checked ~ div.collapse {
+            display: block;
+            width: 425px;
+        }
+
+        /* Style the wrapper */
+        div.wrapper {
+            width: 450px;
+            display: block;
+            margin-right: 10px;
+            float:left;
+        }
+    </style>
+
+    <h1>Checkbox Hack Button With Arrows</h1>
+
+    <div class="wrapper">
+        <input type="checkbox" id="toggle1">
+        <label class="arrow" for="toggle1">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <input type="checkbox" id="toggle2">
+        <label class="arrow" for="toggle2">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+
+</body>
+</html>

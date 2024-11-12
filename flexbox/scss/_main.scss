@@ -1,0 +1,13 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   Styles for the main content component of the web page template - template.html.
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+div.main-info { width: 100%; }
+
+div.row1, div.row2, div.row3 {
+    margin: 1rem auto; max-width: $max-component-width; max-width: 980px; color: white; padding:2rem; text-align: center; font-size: 1.5rem;
+}
+
+div.row1 { background-color: red; }
+div.row2 { background-color: green; }
+div.row3 { background-color: darkblue; }

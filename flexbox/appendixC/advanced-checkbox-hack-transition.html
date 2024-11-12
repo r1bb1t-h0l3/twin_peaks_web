@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Checkbox Hack Transition</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <style>
+        body {
+            webkit-animation: bugfix infinite 1s;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        @-webkit-keyframes bugfix {
+            from {
+                padding: 0;
+            }
+
+            to {
+                padding: 0;
+            }
+        }
+
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            margin: 0 auto;
+            padding: 0;
+            width: 95%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        div.container {
+            position: relative;
+            margin-bottom: 3em;
+            font-size: 16px;
+            line-height: 1.6;
+            width: 600px;
+        }
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        label {
+            display: block;
+            color: white;
+            background-color: blue;
+            padding: 20px 2em;
+            cursor: pointer;
+        }
+
+        /*Collapsible content displaces existing content */
+        div.displace {
+            max-height: 0; 
+            overflow: hidden;
+            transition: max-height .5s ease;
+            background-color: gray;
+            width: 500px;
+        }
+
+        input[type=checkbox]:checked ~ div.displace {
+            max-height: 800px; 
+            border: 1px solid black;
+        }
+
+        /* Collapsible content overlaps existing content*/
+        div.collapse {
+            position:absolute;
+            max-height: 0; 
+            overflow: hidden;
+            transition: all .5s ease;
+            background-color: gray;
+            border: 0px solid black;
+            width: 500px;
+        }
+
+        input[type=checkbox]:checked ~ div.collapse {
+            max-height: 800px; 
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Advanced Checkbox Hack Transition</h1>
+
+    <div class="container">
+        <input type="checkbox" id="toggle1">
+        <label for="toggle1" onclick>Collapsible content displaces existing content</label>
+
+        <div class="displace">
+            <p>This collapsible content displaces existing content.</p>
+            <p>This collapsible content displaces existing content.</p>
+            <p>This collapsible content displaces existing content.</p>
+            <p>This collapsible content displaces existing content.</p>
+            <p>This collapsible content displaces existing content.</p>
+        </div>
+        <div>
+            <p>This paragraph is displaced.</p>
+            <p>
+                With this CSS markup, the top of the collapsible content box will align perfectly
+                with the bottom of the label box, regardless of font size, line-height, or padding within the label element.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <input type="checkbox" id="toggle2">
+        <label class="collapse" for="toggle2" onclick>Collapsible content covers existing content</label>
+
+        <div class="collapse">
+            <p>This collapsible content covers existing content.</p>
+            <p>This collapsible content covers existing content.</p>
+            <p>This collapsible content covers existing content.</p>
+            <p>This collapsible content covers existing content.</p>
+            <p>This collapsible content covers existing content.</p>
+        </div>
+        <div>
+            <p>This paragraph gets covered by collapsible content.</p>
+            <p>
+                When the div that holds the collapsible content has a top value equal to
+                (padding-top + padding-bottom + line-height), the top of the collapsible content box
+                will align perfectly with the bottom of the label box. Or, better yet, when the
+                div does not have a top value declared explicitly, the top of the collapsible content box
+                aligns perfectly with the bottom of the label box.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
+

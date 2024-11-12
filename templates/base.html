@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Peaks Diner</title>
+    <link rel="icon" href="./images/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}" >
+</head>    
+<body>
+    <!-- Header with Title and Navigation -->
+    <header>
+        <h1> Twin Peaks Diner </h1>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-item">home</a>
+            <a href="{{ url_for('about_us') }}" class="nav-item">about us</a>
+            <a href="{{ url_for('menu') }}" class="nav-item">menu</a>
+            <a href="{{ url_for('reservations') }}" class="nav-item">reservations</a>
+            <a href="{{ url_for('contact') }}" class="nav-item">contact</a>
+            
+        </nav>
+        <hr>
+    </header>
+
+    {% block content %}
+    <!--Child template goes here-->
+    {% endblock %}
+
+</body>
+</html>
+
+    <!-- Footer section -->
+

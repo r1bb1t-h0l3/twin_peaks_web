@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Flex-basis property</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            background-color: wheat;
+            font-size: 60px;
+            font-family: arial;
+            font-weight: bold;
+            width: 100%;
+            margin: 20px;
+            text-align: center;
+            border: solid 2px brown;
+        }
+
+        .item {
+            padding: 0px;
+            color: white;
+            border-radius: 15px;
+            height: 180px;
+            padding-top: 60px;
+        }
+
+        .color1 {background-color: red;}
+        .color2 {background-color: green;}
+        .color3 {background-color: blue;}
+        .color4 {background-color: indigo;}
+        .color5 {background-color: violet;} 
+        .color6 {background-color: darkslategray;}
+
+        .container-flex {
+            display: inline-flex;
+        }
+    </style>
+
+    <div style="width:1220px;">
+
+        <div class="container container-flex" >
+            <span class="item color1" style="width: 200px; flex-basis: auto;">1</span>
+            <span class="item color2" style="width: auto; flex-basis: auto;">2</span>
+            <span class="item color3" style="flex-basis: 600px;width: 200px; ">3</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

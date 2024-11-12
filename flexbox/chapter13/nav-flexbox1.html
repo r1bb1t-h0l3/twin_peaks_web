@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation: Flexbox 1</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <!-- Source: http://codepen.io/team/css-tricks/pen/YqaKYR -->
+    <style>
+        html { box-sizing: border-box; font-size: 100%; padding: 0 1rem; min-width: 320px; font-family: Arial; line-height: 1.5; }
+
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body { webkit-animation: bugfix infinite 1s; padding: 0; margin: 0; width: 100%; }
+
+        @-webkit-keyframes bugfix {
+            from { padding: 0; }
+
+            to { padding: 0; }
+        }
+
+        header { font-family: 'Adobe Heiti Std'; font-size: 2.5rem; text-align: center; color: darkblue; }
+
+        input#nav { display: none; }
+
+        label#menu { text-align: center; display: none; cursor:pointer;}
+
+        nav { background-color: blue; width: 100%; display: block; text-align: center; background-color:blue;}
+
+        ul.nav { list-style: none; margin: 0;  padding: 0; width:100%;}
+
+            ul.nav a { text-decoration: none; display: block; padding: 1rem; color: white; }
+
+                ul.nav a:hover { background: #00b7f5; }
+
+        /* Medium screen */
+        @media (min-width: 501px) and (max-width: 800px) {
+
+            header { width: 100%; }
+
+            nav { height: 3.5rem; }
+
+            nav.nav {display: block;}
+
+            ul.nav li { float: left; }
+
+            ul.nav a { font-size: 1.2rem; line-height: 2.9166667; padding: 0 1rem; }
+        }
+
+        /* Large screen */
+        @media (min-width: 801px) {
+
+            header { width: 100%; }
+
+            nav { height: 3.5rem; }
+
+            nav.nav {display: block;}
+
+            ul.nav li, ul.nav a { display: inline-block; }
+
+            ul.nav a { font-size: 1.4rem; line-height: 2.5; padding: 0 1.5rem; }
+        }
+
+        /* Small screen */
+        @media (max-width: 500px) {
+
+            div.wrapper { display: flex; flex-wrap:wrap;  }
+
+            header { flex:1 1 150px; background: darkblue; color: white; font-size: 2rem; line-height: 1.5;}
+
+            label#menu { display: block; flex:0 0 100px; background-color: #00b7f5; background-color: blue; color: white; font-size: 1.5rem; line-height: 2.333333; padding: 0 1rem;}
+            
+            nav.nav { width: 100%; background-color:blanchedalmond; display: none;}
+
+            ul.nav a { color:black; border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+            ul.nav li:last-of-type a { border-bottom: none; }
+        }
+
+        input#nav[type=checkbox]:checked ~ nav.nav {
+            display:block;
+        }
+
+
+        label#menu:after {
+            content: "\25BC"; /* unicode down arrow */
+            padding-left: 5px;
+        }
+
+        input#nav[type=checkbox]:checked ~ label:after {
+            content: "\25B2"; /* unicode up arrow */
+        }
+
+    </style>
+
+
+    <h1>Enhanced Navigation</h1>
+
+    <div style="display:flex; flex-wrap:wrap; ">
+
+        <header>Site Name</header>
+        <input type="checkbox" id="nav">
+        <label for="nav" id="menu" onclick>Menu</label>
+
+        <nav class="nav">
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <p style="clear:both;">Text below navigation bar.</p>
+
+</body>
+</html>

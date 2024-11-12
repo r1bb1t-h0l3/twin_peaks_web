@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation: Basic</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <!-- Source: http://codepen.io/team/css-tricks/pen/YqaKYR -->
+    <style>
+        html { box-sizing: border-box; font-size: 100%; padding: 0 1rem; min-width: 320px; font-family: Arial; line-height: 1.5; }
+
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body { webkit-animation: bugfix infinite 1s; padding: 0; margin: 0; width: 100%; }
+
+        @-webkit-keyframes bugfix {
+            from { padding: 0; }
+
+            to { padding: 0; }
+        }
+
+        header { font-family: 'Adobe Heiti Std'; font-size: 2.5rem; text-align: center; color:blue; }
+
+        nav { background-color: blue; width: 100%; display: block; text-align: center; }
+
+        ul.nav { list-style: none; margin: 0; background-color:blue; padding: 0;}
+
+        ul.nav a { text-decoration: none; padding: 1rem; color: white;  }
+
+        ul.nav a:hover { background: #00b7f5; }
+
+        /* Small screen */
+        @media (max-width: 550px) {
+
+            header { font-size: 2rem;}
+            
+            ul.nav a { display: block; border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+            ul.nav li:last-of-type a { border-bottom: none; }
+        }
+
+        /* Medium screen 
+        @media (min-width: 551px) and (max-width: 800px) {
+
+            nav {height:3.5rem; }
+
+            ul.nav li { float:left;  }
+
+            ul.nav a { font-size: 1.2rem; line-height:2.9166667; padding: 0 1rem; }
+
+        }   */
+
+        /* Large screen */
+        @media (min-width: 551px) {
+
+            nav {height:3.5rem; }
+
+            ul.nav li, ul.nav a { display: inline-block;  }
+
+            ul.nav a { font-size:1.2rem; line-height: 2.9166667; padding: 0 1rem; }
+            
+        }       
+
+    </style>
+
+
+    <h1>Basic Navigation</h1>
+
+    <div id="header-wrapper">
+
+        <header>Site Name</header>
+        <nav class="nav">
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <p>Text below menu.</p>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   These statements assign values to variables that can be used in SCSS files. 
+// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+// Colors without semantic meaning: Theme 1
+$color1: blue;                              //blue
+$lightest-color1: deepskyblue; 
+$darkest-color1: darkblue; 
+$lighter-color1: darken($lightest-color1, 10%);    
+$darker-color1: lighten($darkest-color1, 10%);   
+   
+// Width
+$max-component-width: 1300px;
+$max-3-col-wrapper-width: 1300px;

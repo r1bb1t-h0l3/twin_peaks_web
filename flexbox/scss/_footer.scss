@@ -1,0 +1,49 @@
+﻿// '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+//   These statements define styles for the footer component.
+// ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+/* Common basic styles */
+footer { background-color: white; }
+nav.footer-nav { background-color: $color1; width: 100%; text-align: center;}
+ul.footer-nav { list-style: none; background-color: $color1; margin:0 auto; padding: 0; max-width: $max-component-width; }
+.footer-nav li { display: inline-block; }
+a.footer-nav { display: inline-block; text-decoration: none; color: white; line-height: 3; }
+a.footer-nav:hover { background-color: $lightest-color1; }
+div.footer-details { max-width: $max-component-width; margin: 1rem auto; text-align:center; }
+
+/* Small screens */
+@media (max-width: 500px) { 
+    /* Basic */
+    a.footer-nav { font-size: 1rem; padding: 0 .5rem;}
+}
+
+/* Medium screens */
+@media (min-width: 501px) and (max-width: 850px) { 
+    /* Basic */
+    a.footer-nav { font-size: 1.1rem; padding: 0 1.5rem;}
+}
+
+/* Large screens */
+@media (min-width: 851px)  { 
+    /* Basic */
+    a.footer-nav { font-size: 1.2rem; padding: 0 2rem;} 
+}
+
+/* Common enhanced styles */
+.flexbox.flexwrap { 
+    ul.footer-nav { display: flex; justify-content: space-around; }
+}  
+
+/* Large screens: Optional added content
+@media (min-width: 851px)  {   
+    
+    ul.footer-nav li:nth-child(1) a:after { content: " us";} 
+    ul.footer-nav li:nth-child(2) a:after { content: " us";} 
+    ul.footer-nav li:nth-child(3) a:after { content: " policy";} 
+    ul.footer-nav li:nth-child(4) a:after { content: " of use";} 
+}  */
+
+
+
+
+

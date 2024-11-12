@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Hack Transition</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            padding: 10px;
+            min-width: 320px;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Hide the checkbox */
+        input[type=checkbox] {
+            display: none;
+        }
+
+        /* Style the label */
+        label {
+            font-family: Arial;
+            font-size: 1.2em;
+            background-color: blue;
+            color: white;
+            padding: .7em 2em;
+            border-radius: .5em;
+            cursor: pointer;
+            background-color: blue;
+        }
+
+            label:hover {
+                background-color: red;
+            }
+
+
+            label:after {
+                content: "\25BC"; /* unicode down arrow */
+                padding-left: 200px;
+            }
+
+        input[type=checkbox]:checked ~ label:after {
+            content: "\25B2"; /* unicode up arrow */
+        }
+
+        /* Style the container */
+        div.collapse {
+            max-height: 0;
+            overflow: hidden;
+            width: 407px;
+            background: white;
+            padding-left: 10px;
+            transition: all .8s ease-in-out;
+        }
+
+        input[type=checkbox]:checked ~ div.collapse {
+            max-height: 500px;
+            width: 407px;
+        }
+
+        /* Style the wrapper */
+        div.wrapper {
+            width: 450px;
+            margin-right: 10px;
+            float: left;
+        }
+    </style>
+
+    <h1>Checkbox Hack: Transition</h1>
+
+    <div class="wrapper">
+        <input type="checkbox" id="toggle1">
+        <label class="arrow" for="toggle1">Without Overlap</label>
+        <div class="collapse">
+            <p>Line 1 of hidden content.</p>
+            <p>Line 2 of hidden content.</p>
+        </div>
+        <p>Line 1 of existing content.</p>
+        <p>Line 2 of existing content.</p>
+        <p>Line 3 of existing content.</p>
+    </div>
+
+    <div class="wrapper">
+        <input type="checkbox" id="toggle2">
+        <label class="arrow" for="toggle2">With Overlap</label>
+        <div class="collapse" style="position:absolute; background-color:wheat; ">
+            <p>Line 1 of hidden content.</p>
+            <p>Line 2 of hidden content.</p>
+        </div>
+        <p>Line 1 of existing content.</p>
+        <p>Line 2 of existing content.</p>
+        <p>Line 3 of existing content.</p>
+    </div>
+
+</body>
+</html>

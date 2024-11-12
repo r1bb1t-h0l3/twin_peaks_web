@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sizes Attribute</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        p, h1 {
+            margin: 10px;
+        }
+
+
+        img1 {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
+    <h1>Sizes Test Results</h1>
+
+    <p>Here are the results of some experiments with the sizes attribute and flexbox.</p>
+
+    <ul>
+        <li>
+            Image displayed. Mozilla Firefox displays different images as screen shrinks and expands.
+            Chrome had problems. Sometimes, displayed big image when it was too large for screen.
+            Opera initially displayed small images; but once big image (elephant) appeared, it only showed elephant at 50% viewport width.
+            IE11 showed lemur at all screen widths.
+            Edge did not display any image when the page loaded intially at a narrow width. 
+        </li>
+        <li></li>
+    </ul>
+
+
+    <br /><br />
+
+    <div style="text-align: center; margin:20px;">
+        <img src="/images/lemur-200px.jpg"
+            sizes="(min-width: 400px) 50vw, 100vw"
+            srcset="/images/cat-300.jpg 400w, /images/dog-600.jpg 600w, /images/elephant-900.jpg 800w" />
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Hack Button Styles</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+            padding: 0 ;
+            min-width:320px;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Hide the checkbox */
+        input[type=checkbox] {
+            display: none;
+        }
+
+        /* Style the label */
+        label {
+            font-family: Arial;
+            background-color: blue;
+            color: white;
+            padding: .7em 2em;
+        }
+
+        label.round, label.color, label.cursor, label.arrow { border-radius: .5em; }
+        label.cursor, label.arrow { cursor:pointer; }
+        
+        label:hover { background-color: red; }
+        
+
+        label.arrow:after {
+            content: "\25BC" ; /* unicode down arrow */
+            padding-left:40%;
+        }
+
+        input[type=checkbox]:checked ~ label.arrow:after {
+            content: "\25B2"; /* unicode up arrow */
+        }
+
+        /* Style the container */
+        div.collapse {
+            display: none;
+            background-color: antiquewhite;
+            border: 1px solid black;
+            padding: 10px;
+            min-width: 260px;
+        }
+
+        input[type=checkbox]:checked ~ div.collapse {
+            display: block;
+            width: 45%;
+        }
+
+        /* Style the wrapper */
+        div.wrapper { min-width:35%; }
+
+    </style>
+
+    <h1>Checkbox Hack Button Styles</h1>        
+
+    <h2>Square Cornered Button</h2>
+    <div class="wrapper">
+        <input type="checkbox" id="toggle1">
+        <label class="square" for="toggle1">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+        
+    <h2>Round Cornered Button</h2>
+    <div class="wrapper">
+        <input type="checkbox" id="toggle2">
+        <label class="round" for="toggle2">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+
+    <h2>Color Change on Hover</h2>
+    <div class="wrapper">
+        <input type="checkbox" id="toggle3">
+        <label class="color" for="toggle3">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+
+    <h2>Cursor Change on Hover</h2>
+    <div class="wrapper">
+        <input type="checkbox" id="toggle4">
+        <label class="cursor" for="toggle4">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+
+    <h2>Button with Arrow</h2>
+    <div class="wrapper">
+        <input type="checkbox" id="toggle5">
+        <label class="arrow" for="toggle5">Click me!</label>
+        <div class="collapse">
+            <p>Lorem ipsum dolor sit amet, mea te vocibus explicari.</p>
+            <p>Ad qui nihil percipit cotidieque, cum recusabo expetenda ocurreret in, lucilius torquatos vim at.</p>
+        </div>
+    </div>
+
+</body>
+</html>

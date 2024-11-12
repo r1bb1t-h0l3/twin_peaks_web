@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Text With EMs</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+</head>
+<body>
+
+    <style>
+        html {
+            font-size: 100%;
+            font-family: Arial;
+        }
+
+        .Wrapper {
+            max-width: 60em;
+            padding: 1em;
+            margin: 2em auto;
+            border: .25em black solid;
+            background-color: aliceblue;
+            background-color: whitesmoke;
+            border-radius: 15px;
+        }
+
+        header {
+            font-family: Arial;
+            color: #4f81bd;
+            font-size: 4.5em;
+        }
+
+        nav {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            background-color: #4f81bd;
+            color: white;
+            padding: 1em 0px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        section {
+            font-size: 1.4em;
+        }
+
+        section h1 {
+            font-size: 2.5em;
+            color: #4f81bd;
+        }
+
+        @media (max-width:30rem) {
+            html {
+                font-size: .65em;
+            }
+        }
+    </style>
+
+    <div class="Wrapper">
+
+        <header class="SiteName">Site Name</header>
+
+        <nav>
+            <span>Item 1</span>
+            <span>Item 2</span>
+            <span>Item 3</span>
+            <span>Item 4</span>
+            <span>Item 5</span>
+        </nav>
+
+        <section>
+            <h1>Main Heading</h1>
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloemque laudantium,
+                totam em aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+            </p>
+        </section>
+
+    </div>
+
+    <div class="Wrapper">
+
+        <header>Site Name</header>
+
+        <nav>
+            <span>Item 1</span>
+            <span>Item 2</span>
+            <span>Item 3</span>
+            <span>Item 4</span>
+            <span>Item 5</span>
+        </nav>
+
+        <section>
+            <h1>Main Heading</h1>
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloemque laudantium,
+                totam em aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </p>
+        </section>
+
+    </div>
+
+</body>
+</html>

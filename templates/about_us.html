@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="two-column-container-item">
+        <img src="{{url_for('static', filename='images/norma.png')}}" alt="photo of Norma">
+        <div class="two-column-container-text">
+            <h2>Norma Jennings</h2>
+            <p>I've been running the Twin Peaks Diner since I graduated college in 1980. In 1987 we started the 
+            very popular <em> Meals on Wheels</em>program to support our local community. Through the years 
+            my team and I have weathered quite a few storms, but we continue to uphold the quality and service that
+            we are known for. </p>
+        </div>
+    </div>
+
+    <div class="two-column-container-item">
+        <img src="{{url_for('static', filename='images/shelley.png')}}" alt="photo of Shelley">
+        <div class="two-column-container-text">
+            <h2>Shelley Briggs</h2>
+            <p> I have worked with Norma at Twin Peaks ever since I graduated highschool. Through the years 
+                we have been blessed with consistent support from the local community and we hope to continue 
+                bringing you the highest quality comfort food in Washington.
+            </p>
+        </div> 
+
+    </div>
+{% endblock %}

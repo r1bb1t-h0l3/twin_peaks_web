@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Picture Element</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        .container {
+            font-family: arial;
+            border: solid 2px brown;
+            margin: 20px auto;
+            width: 90%;
+            text-align: left;
+        }
+
+        .container-flex {
+            display: inline-flex; /* This declares an inline flex container */
+            flex-direction: column;
+        }
+
+        p, h1 {
+            margin: 10px;
+        }
+
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+
+    <h1>Picture Element Test Results</h1>
+
+    <p>Here are the results of some experiments with the picture element and flexbox.</p>
+
+    <ul>
+        <li>
+            Firefox, Chrome, Opera, and Edge all display different images as screen shrinks and expands.
+            IE11 displays the default image specified in the "src" attribute.
+        </li>
+    </ul>
+
+    <div class="container container-flex">
+        <picture>
+            <source media="(min-width: 400px) and (max-width: 599px)" srcset="/images/dog-865px.jpg" />
+            <source media="(min-width: 600px)" srcset="/images/elephant-800px.jpg" />
+            <img src="/images/kitten-568.jpg" />
+        </picture>
+
+        <h1>Flex Without Wrapper</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+        </p>
+    </div>
+    <br /><br />
+
+    <div class="wrapper">
+        <div class="container container-flex">
+
+            <div style="width:100%; ">
+                <picture>
+                    <source media="(min-width: 400px) and (max-width: 599px)" srcset="/images/dog-865px.jpg" />
+                    <source media="(min-width: 600px)" srcset="/images/elephant-800px.jpg" />
+                    <img src="/images/kitten-568.jpg" />
+                </picture>
+
+                <h1>Flex With Wrapper</h1>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <br /><br />
+
+    <div class="container">
+        <div style="text-align: center;">
+            <picture>
+                <source media="(min-width: 400px) and (max-width: 599px)" srcset="/images/dog-865px.jpg" />
+                <source media="(min-width: 600px)" srcset="/images/elephant-800px.jpg" />
+                <img src="/images/kitten-568.jpg" />
+            </picture>
+        </div>
+
+        <h1>No Flex</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+        </p>
+    </div>
+    <br /><br />
+
+    <div>
+        <picture>
+            <source media="(min-width: 400px) and (max-width: 599px)" srcset="/images/dog-865px.jpg" />
+            <source media="(min-width: 600px)" srcset="/images/elephant-800px.jpg" />
+            <img src="/images/kitten-568.jpg" />
+        </picture>
+    </div>
+
+    <h1>No wrapper</h1>
+
+</body>
+</html>

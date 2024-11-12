@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <title>Flex property</title>
+    <meta charset="utf-8" />
+    <script src="/modernizr/modernizr-custom.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+
+        html {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif ;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .screen { background-color: wheat; width: 600px; height: 200px; font-size:2rem; margin:1rem; }
+
+        .small-box { background-color: blue; color: white; width: 40%; height: 60%; text-align: center; padding-top:35px;}
+
+        .flexbox .container-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+        }
+
+    </style>
+
+   
+
+    <div>
+        <div class="screen ">
+            <div class="small-box">Small box</div>
+        </div>
+
+        <div class="screen container-flex">
+            <div class="small-box">Small box</div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

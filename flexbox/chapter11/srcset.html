@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Srcset Attribute</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+</head>
+<body>
+
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 100%;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .wrapper {
+            width:100%;
+            text-align:center;
+        }
+
+        .container {
+            font-family: arial;
+            border: solid 2px brown;
+            margin: 20px auto;
+            width:90%;
+            text-align:left;
+        }
+
+        .container-flex {
+            display: inline-flex; /* This declares an inline flex container */
+            flex-direction:column;
+        }
+
+        p, h1 {
+            margin: 10px;
+        }
+        
+
+        img {
+            width: 100%; 
+            height:auto;
+        }           
+
+    </style>
+
+    <h1>Srcset Test Results</h1>
+
+    <p>Here are the results of some experiments with the srcset attribute and flexbox.</p>
+
+    <ul>
+        <li>
+            Image displayed. Mozilla Firefox displays different images as screen shrinks and expands.
+            Chrome and Opera display initial image based on viewport size. As viewport grows, it displays bigger images.
+            Once a bigger image is displayed, that image continues to be displayed even when the viewport shrinks.
+            MS Edge behaves similarly; except that sometimes when the cat image is supposed to be displayed on small viewports (/images/kitten-568.jpg 400w,),
+            edge doesn't display any image. When the dog image is supposed to be displayed on small viewports (/images/dog-865px.jpg 400w,), it does get displayed.
+        </li>
+        <li>Srcset. Srcset works on all modern browsers, except IE11. IE displays the "src" images.</li>
+        <li>Center flex container. Cannot center flex container with "margin: 20px auto;" on Mozilla Firefox.</li>
+        <li>
+            The "flex:none;" declaration. The image inside the flex container does not need a "flex:none;" declaration to maintain
+            its proportions as it shrinks and expands.
+        </li>
+    </ul>
+
+    <div class="container container-flex" >
+        <img src="/images/wolf-1138px.jpg" 
+             srcset="/images/kitten-568.jpg 400w, /images/dog-865px.jpg 600w,  /images/elephant-800px.jpg 800w" />
+
+        <h1>Flex Without Wrapper</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+        </p>
+    </div>
+    <br /><br />
+
+    <div class="wrapper" >
+        <div class="container container-flex">
+
+            <div style="width:100%; ">
+                <div style="text-align: center; ">
+                    <img src="/images/wolf-1138px.jpg"
+                         srcset="/images/kitten-568.jpg 400w, /images/dog-865px.jpg 600w, /images/elephant-800px.jpg 800w" />
+                </div>
+
+                <h1>Flex With Wrapper</h1>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <br /><br />
+
+    <div class="container">
+        <div style="text-align: center;">
+            <img src="/images/wolf-1138px.jpg"
+                 srcset="/images/kitten-568.jpg 400w, /images/dog-865px.jpg 600w, /images/elephant-800px.jpg 800w" />
+        </div>
+
+        <h1>No Flex</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+        </p>
+    </div>
+    <br /><br />
+
+    <div style="text-align: center; margin:20px;">
+        <img src="/images/wolf-1138px.jpg"
+             srcset="/images/kitten-568.jpg 400w, /images/dog-865px.jpg 600w, /images/elephant-800px.jpg 800w" />
+    </div>
+
+</body>
+</html>
