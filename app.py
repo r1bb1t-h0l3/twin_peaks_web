@@ -1,5 +1,4 @@
-from flask import Flask, render_template
-import json
+from flask import Flask, render_template, json
 import os
 
 app = Flask(__name__)
@@ -10,7 +9,15 @@ def load_menu():
     json_path = os.path.join(current_directory, 'menu.json')
     with open(json_path, 'r') as file:
         menu_data = json.load(file)
-    return menu_data['items']
+
+    # access items key
+    items = menu_data['items']
+
+    # categorise items
+    food_items = [item for item in items if item['category'] == 'Food']
+    drink_items = [item for item in items if item['category'] == 'Drinks']
+    
+    return food_items, drink_items
 
 # route for the home page
 @app.route("/")
@@ -20,8 +27,8 @@ def home():
 # route for menu page
 @app.route("/menu")
 def menu():
-    items = load_menu()
-    return render_template("menu.html", items=items)
+    food_items, drink_items = load_menu()
+    return render_template("menu.html", food_items=food_items, drink_items=drink_items)
 
 # route for about us page
 @app.route("/about_us")

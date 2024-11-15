@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twin Peaks Diner</title>
-    <link rel="icon" href="./images/favicon-16x16.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static',filename='/images/favicon-16x16.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}" >
 </head>    
 <body>
@@ -26,6 +26,14 @@
     <!--Child template goes here-->
     {% endblock %}
 
+<footer>
+    <div class="footer-details">
+        <p class="footer-details">Copyright &copy; 2024</p>
+        <p class="footer-details">Powered by <a href="http://flexbox-rwd.com/">The Red Room</a></p>
+    </div>
+
+</footer>
+<script src="{{ url_for('static', filename='script.js')}}"></script>
 </body>
 </html>
 

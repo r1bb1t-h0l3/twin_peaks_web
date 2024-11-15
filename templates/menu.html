@@ -1,19 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Menu Items-->
+<h1> Our Menu </h1>
 
-    <!-- Menu Items-->
-
-    {% for item in items %}
-<div class="menu-item">
-    <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}">
-    <div class="description">
-        <h3>{{ item.name }}</h3>
-        <p><em>{{ item.description }}</em></p>
+    <!-- Food Section -->
+    <h2>Food</h2>
+    <div class="menu-section">
+        {% for item in food_items %}
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}" width="320">
+                <div class="description">
+                    <h3>{{ item.name }}</h3>
+                    <p><em>{{ item.description }}</em></p>
+                </div>
+                <div class="price">{{ item.price }}</div>
+            </div>
+        {% endfor %}
     </div>
-    <div class="price">{{ item.price }}</div>
-</div>
-{% endfor %}
 
-    
+    <!-- Drinks Section -->
+    <h2>Drinks</h2>
+    <div class="menu-section">
+        {% for item in drink_items %}
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}" width="320">
+                <div class="description">
+                    <h3>{{ item.name }}</h3>
+                    <p><em>{{ item.description }}</em></p>
+                </div>
+                <div class="price">{{ item.price }}</div>
+            </div>
+        {% endfor %}
+    </div>  
 {% endblock %}
