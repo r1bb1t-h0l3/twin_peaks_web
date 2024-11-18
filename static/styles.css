@@ -163,8 +163,36 @@ footer {
     font-weight: normal;
  }
 
- /*CSS for reservations page*/
 
+ /* additional css for about_us page*/
+ .two-column-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.two-column-container-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.two-column-container-field img {
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+ }
+
+ /*CSS for reservations page*/
  .two-column-container-item {
     display: flex;
     justify-content: center;
@@ -178,7 +206,7 @@ footer {
 
  .two-column-container-item img {
     max-width: 100%;
-    width: 600px;
+    width: 300px;
     height: auto;
  }
 
