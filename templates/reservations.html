@@ -1,14 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class ="two-column-container-item">
-        <img src="{{url_for('static', filename='images/reservation_1.jpg')}}" alt="couple stting at diner table">
-        <div class = "reservation-text">
-            <h2> How to make a reservation </h2>
-            <p> At this time we only accept reservations by phone. 
-            To make a reservation please call our number <em>425-831-5512</em> during work hours.</p>
-            <p>No deposit is necessary, but please let us know at least 2 hours in advance if you wish to cancel. </p>
+    <div class="two-column-container-item">
+        <img src="{{ url_for('static', filename='images/reservation_1.jpg') }}" alt="couple sitting at diner table">
+        <div class="reservation-text">
+            <h2>How to make a reservation</h2>
+            <p>
+                At this time we only accept reservations by phone.
+                To make a reservation please call our number <em>425-831-5512</em> during work hours.
+            </p>
+            <p>No deposit is necessary, but please let us know at least 2 hours in advance if you wish to cancel.</p>
         </div>
-    </div> 
-    
-{% endblock %}images/reservation_1.jpg
+
+         <!-- Flash message -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+        
+        <!-- Reservation Form -->
+        <form method="POST">
+            {% if success_message %}
+            <div class="success-message">
+                <p>{{ success_message }}</p>
+            </div>
+            {% endif %}
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.name.label }} {{ form.name }}
+            </div>
+            <div>
+                {{ form.email.label }} {{ form.email }}
+            </div>
+            <div>
+                {{ form.num_people.label }} {{ form.num_people }}
+            </div>
+            <div>
+                {{ form.date.label }} {{ form.date }}
+            </div>
+                {{ form.submit }}
+        </form>
+    </div>
+{% endblock %}
