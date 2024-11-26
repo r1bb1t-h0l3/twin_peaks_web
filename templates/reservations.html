@@ -6,47 +6,45 @@
         <div class="reservation-text">
             <h2>How to make a reservation</h2>
             <p>
-                At this time we only accept reservations by phone.
-                To make a reservation please call our number <em>425-831-5512</em> during work hours.
+                You can make a reservation by calling us at <em>425-831-5512</em> or using our handy-dandy reservation form below.    
             </p>
             <p>No deposit is necessary, but please let us know at least 2 hours in advance if you wish to cancel.</p>
         </div>
 
-         <!-- Flash message -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <div class="flash-messages">
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
-    {% endwith %}
-
-        
-        <!-- Reservation Form -->
-        <form method="POST">
-            {% if success_message %}
-            <div class="success-message">
-                <p>{{ success_message }}</p>
+        <!-- Flash message
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             </div>
-            {% endif %}
+        {% endif %}
+        {% endwith %} -->
+
+        <!-- Reservation Form -->
+        <form id="reservationForm" method="POST" class="reservation-form">
             {{ form.hidden_tag() }}
-            <div>
+            <div class="form-group">
                 {{ form.name.label }} {{ form.name }}
             </div>
-            <div>
+            <div class="form-group">
                 {{ form.email.label }} {{ form.email }}
             </div>
-            <div>
+            <div class="form-group">
                 {{ form.num_people.label }} {{ form.num_people }}
             </div>
-            <div>
+            <div class="form-group">
                 {{ form.date.label }} {{ form.date }}
             </div>
+            <div class="form-group">
                 {{ form.submit }}
+            </div>
         </form>
+
+        <!-- Placeholder for the confirmation message -->
+        <div id="confirmationMessage" style="display:none; margin-top: 20px;"></div>
     </div>
 {% endblock %}

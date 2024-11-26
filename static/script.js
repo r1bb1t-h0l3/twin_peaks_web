@@ -18,3 +18,36 @@ document.addEventListener("mousemove", (event) => {
 document.addEventListener("mouseleave", () => {
   mouseFollower.style.display = "none";
 });
+
+//--------------------------------------------------------//
+
+//Reservation Form AJAX Submission
+document.getElementById("reservationForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const formData = new FormData(this);
+
+  // Send the form data via fetch
+  fetch("/reservations", {
+      method: "POST",
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Display the confirmation message
+      const confirmationMessage = document.getElementById("confirmationMessage");
+      confirmationMessage.style.display = "block";
+      confirmationMessage.innerText = data.message;
+      confirmationMessage.style.backgroundColor = "#d4edda"; // Light green background for success
+      confirmationMessage.style.color = "#155724"; // Dark green text
+      confirmationMessage.style.padding = "10px";
+      confirmationMessage.style.borderRadius = "5px";
+
+      // Optionally clear the form fields
+      document.getElementById("reservationForm").reset();
+  })
+  .catch(error => {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again later.");
+  });
+});

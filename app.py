@@ -88,16 +88,16 @@ def reservations():
         db_session.commit()
         db_session.close() #close session after committing
 
-        success_message = (
-            f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
-            f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}."
-        )
+        
         # flash success message
-        flash(f"Reservation for {form.name.data} added successfully", "success")
+        return jsonify({
+            "message": f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
+            f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}."
+        })
 
-        # redirect back to the saame route
+        # # redirect back to the same route
         # return redirect(url_for("reservations"))
-        return render_template("reservations.html", form=form, success_message=success_message)
+        
 
     # handle GET request
     return render_template("reservations.html", form=form)
