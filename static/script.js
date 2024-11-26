@@ -39,7 +39,7 @@ document.getElementById("reservationForm").addEventListener("submit", function (
       confirmationMessage.style.display = "block";
       confirmationMessage.innerText = data.message;
       confirmationMessage.style.backgroundColor = "#d4edda"; // Light green background for success
-      confirmationMessage.style.color = "#155724"; // Dark green text
+      confirmationMessage.style.color = data.is_valid ? "#155724" : "#FF0000"; // Dark green text
       confirmationMessage.style.padding = "10px";
       confirmationMessage.style.borderRadius = "5px";
 

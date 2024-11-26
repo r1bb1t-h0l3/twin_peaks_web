@@ -4,16 +4,8 @@ from flask import (
     json,
     jsonify,
     request,
-    redirect,
-    flash,
-    url_for,
 )
-from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, DateField, SubmitField
-from wtforms.validators import DataRequired, Email
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import String, Integer, Date, DateTime
-from datetime import datetime, timezone
+
 from forms import ReservationForm
 from models import Reservation
 from database import SessionLocal
@@ -63,44 +55,44 @@ def about_us():
 # route for reservations
 @app.route("/reservations", methods=["GET", "POST"])
 def reservations():
-    # Log type of request
-    if request.method == "POST":
-        print("POST request received")
-    else:
-        print("GET request received")
-
     # create form object
     form = ReservationForm()
 
+    # Log type of request
+    if request.method == "GET":
+        print("GET request received")
+        # handle GET request
+        return render_template("reservations.html", form=form)
+    
+    print("POST request received")        
+
     # handle form submission
-    if form.validate_on_submit():  # POST request with valid form data
-        # open a database session
-        db_session = SessionLocal()
-
-        # Create and save reservation
-        reservation = Reservation(
-            name=form.name.data,
-            email=form.email.data,
-            num_people=form.num_people.data,
-            date=form.date.data,
-        )
-        db_session.add(reservation)
-        db_session.commit()
-        db_session.close() #close session after committing
-
-        
-        # flash success message
+    if not form.validate_on_submit():  # POST request with valid form data
         return jsonify({
-            "message": f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
-            f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}."
-        })
+           "message": "Data is incorrect",
+           "is_valid": False
+       }) 
 
-        # # redirect back to the same route
-        # return redirect(url_for("reservations"))
-        
+    # open a database session
+    db_session = SessionLocal()
 
-    # handle GET request
-    return render_template("reservations.html", form=form)
+    # Create and save reservation
+    reservation = Reservation(
+        name=form.name.data,
+        email=form.email.data,
+        num_people=form.num_people.data,
+        date=form.date.data,
+    )
+    db_session.add(reservation)
+    db_session.commit()
+    db_session.close() #close session after committing
+
+    # flash success message
+    return jsonify({
+        "message": f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
+        f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}.",
+        "is_valid": True
+    })
 
 
 # route for contacts
