@@ -44,7 +44,9 @@ document.getElementById("reservationForm").addEventListener("submit", function (
       confirmationMessage.style.borderRadius = "5px";
 
       // Optionally clear the form fields
-      document.getElementById("reservationForm").reset();
+      if (data.is_valid) {
+        document.getElementById("reservationForm").reset();
+      }
   })
   .catch(error => {
       console.error("Error:", error);
