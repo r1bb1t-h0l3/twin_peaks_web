@@ -18,6 +18,7 @@ def client():
     Pytest fixture to create a test client for the Flask application.
     """
     app.config["TESTING"] = True
+    app.config["WTF_CSRF_ENABLED"] = False
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test_reservations.db"
     test_client = app.test_client()
 
@@ -106,7 +107,7 @@ def test_reservations_page_post_invalid_email(client):
     }
     response = client.post("/reservations", data=invalid_data)
     assert response.status_code == 200
-    assert b"Email format is incorrect" in response.data  # Check for error message
+    assert b"email is invalid" in response.data  # Check for error message
 
 
 def test_about_us_page(client):

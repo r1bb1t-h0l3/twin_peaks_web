@@ -95,7 +95,7 @@ def reservations():
         - JSON response with success or error messages (POST).
     """
     # create form object
-    form = ReservationForm()
+    form = ReservationForm(form=request.form)
 
     # Log type of request
     if request.method == "GET":
@@ -107,15 +107,20 @@ def reservations():
 
     # handle form submission
     if not form.validate_on_submit():  # POST request with valid form data
-        print(form.errors)
+        # Collect error messages for invalid fields
+        error_messages = {
+            field_name: error_list[0] 
+            for field_name, error_list in form.errors.items()
+        }
         return jsonify(
             {
-                "message": "Email format is incorrect, please try again",
-                "is_valid": False,
+                "message": "Invalid form data. Please correct and try again.",
+                "errors": error_messages,
+                "is_valid": False
             }
         )
 
-    # open a database session
+    # if form is valid open a database session
     db_session = SessionLocal()
 
     # Create and save reservation

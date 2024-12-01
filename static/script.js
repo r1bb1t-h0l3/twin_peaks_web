@@ -22,34 +22,38 @@ document.addEventListener("mouseleave", () => {
 //--------------------------------------------------------//
 
 //Reservation Form AJAX Submission
-document.getElementById("reservationForm").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the default form submission
+document.getElementById("reservationForm").addEventListener("submit", async (e) => {
+  e.preventDefault(); // Prevent the default form submission
 
-  const formData = new FormData(this);
+  const form = e.target;
+  const formData = new FormData(form);
 
-  // Send the form data via fetch
-  fetch("/reservations", {
-      method: "POST",
-      body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-      // Display the confirmation message
-      const confirmationMessage = document.getElementById("confirmationMessage");
-      confirmationMessage.style.display = "block";
-      confirmationMessage.innerText = data.message;
-      confirmationMessage.style.backgroundColor = "#d4edda"; // Light green background for success
-      confirmationMessage.style.color = data.is_valid ? "#155724" : "#FF0000"; // Dark green text
-      confirmationMessage.style.padding = "10px";
-      confirmationMessage.style.borderRadius = "5px";
-
-      // Optionally clear the form fields
-      if (data.is_valid) {
-        document.getElementById("reservationForm").reset();
-      }
-  })
-  .catch(error => {
-      console.error("Error:", error);
-      alert("An error occurred. Please try again later.");
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: formData,
   });
+
+  const data = await response.json();
+
+  // Clear previous error messages if any
+  document.querySelectorAll(".text-danger").forEach((el) => (el.innerText = ""));
+  if (!data.is_valid) {
+    //display errors next to fields
+    for (const [field, message] of Object.entries(data.errors)) {
+      const errorElement = document.getElementById(`${field}Error`);
+      if (errorElement) {
+        errorElement.innerText = message;
+        errorElement.style.color = "red";
+      }
+    }
+  } else {
+    // Display success message
+    const confirmationMessage = document.getElementById("confirmationMessage");
+    confirmationMessage.style.color = "green";
+    confirmationMessage.innerText = data.message;
+    confirmationMessage.style.color = "green";
+
+    // Optionally clear the form fields
+    document.getElementById("reservationForm").reset();
+  }
 });

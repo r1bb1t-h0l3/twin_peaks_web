@@ -20,7 +20,7 @@ class ReservationForm(FlaskForm):
     )
     num_people = IntegerField(
         "Number of People",
-        validators=[DataRequired(), NumberRange(min=1)],
+        validators=[DataRequired(), NumberRange(min=1, max=6, message="For reservations of more than 6 people, please contact us directly.")],
         render_kw={"placeholder": "2"},
     )
     date = DateField(
