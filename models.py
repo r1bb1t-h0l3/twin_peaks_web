@@ -1,20 +1,9 @@
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, declarative_base
 from sqlalchemy import String, Integer, Date, DateTime
 from datetime import datetime, timezone
 from datetime import date as dt_date
 
-
-# define basse class for all models
-class Base(DeclarativeBase):
-    """
-    Base class for all SQLAlchemy ORM models.
-
-    This class serves as the base for all models in the database.
-    It uses SQLAlchemy's `DeclarativeBase` to define the declarative base for ORM mapping.
-    """
-
-    pass
-
+Base = declarative_base()
 
 # define the Reservation model
 class Reservation(Base):
