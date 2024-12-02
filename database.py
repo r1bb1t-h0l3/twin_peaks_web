@@ -3,6 +3,8 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from models import Base
 
 
+print("Running database.py")
+
 # database connection URI
 DATABASE_URI = "sqlite:///instance/reservations.db"
 """
@@ -25,14 +27,6 @@ sqlalchemy.orm.sessionmaker: A session factory bound to the database engine.
                               Sessions created by this factory handle database transactions.
 """
 
-# Define the Base class for models
-Base = declarative_base()
-"""
-sqlalchemy.orm.DeclarativeBase: The base class for all ORM models. 
-                                Models inheriting from this base are mapped to database tables.
-"""
-
-
 # Initialize tables
 def initialize_db():
     """
@@ -44,4 +38,10 @@ def initialize_db():
     Returns:
         None
     """
+    print("Creating tables")
     Base.metadata.create_all(bind=engine)
+    print("Tables created successfully")
+
+if __name__ == "__main__":
+    initialize_db()
+    print("Database setup complete")
