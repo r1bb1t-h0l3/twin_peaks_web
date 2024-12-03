@@ -24,6 +24,28 @@
             </div>
         {% endif %}
         {% endwith %} -->
+        <!-- Calendar -->
+
+        <div id="calendar"></div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
+                        events: [],
+                        dateClick: function (info) {
+                            fetch(`/get_available_slots/${info.dateStr}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                // Show available slots in a modal or side panel
+                                    console.log(data); // Replace this with your rendering logic
+                                });
+                        },
+                    });
+                    calendar.render();
+                });
+            </script>
+
 
         <!-- Reservation Form -->
         <form id="reservationForm" method="POST">
@@ -47,6 +69,12 @@
                 {{ form.date.label }}
                 {{ form.date(class="form-control") }}
                 <small id="dateError" class="text-danger"></small>
+            </div>
+            <div>
+                <label for="timeSlot">Time Slot:</label>
+                <select id="timeSlot" name="time">
+                    <!-- POpulate slots dynamically -->
+                </select>          
             </div>
             <button type="submit" class="btn btn-primary">Reserve Table</button>
         </form>

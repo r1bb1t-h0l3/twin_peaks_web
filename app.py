@@ -9,6 +9,7 @@ from flask import (
 from forms import ReservationForm
 from models import Reservation
 from database import SessionLocal
+from datetime import datetime, timedelta
 import os
 
 app = Flask(__name__, instance_relative_config=True)
@@ -78,6 +79,67 @@ def about_us():
     """
     return render_template("about_us.html")
 
+#route to get available timeslots from db
+def get_available_slots(date, tables=6, interval=30):
+    """
+    Get available time slots for a given date.
+    
+    Args:
+        date (date): The date to check availability.
+        tables (int): Number of tables in the restaurant.
+        interval (int): Interval in minutes between reservations (e.g., 30).
+    
+    Returns:
+        dict: Available time slots with the number of free tables per slot.
+    """
+    db_session = SessionLocal()
+    reservations = db_session.query(Reservation).filter(Reservation.date == date).all()
+    db_session.close()
+
+    # Generate time slots
+    opening_time = datetime.strptime("17:00", "%H:%M").time()  # 5:00 PM
+    closing_time = datetime.strptime("23:00", "%H:%M").time()  # 11:00 PM
+    current_time = datetime.combine(date, opening_time)
+    end_time = datetime.combine(date, closing_time)
+    slots = {}
+
+    while current_time < end_time:
+        slot_time = current_time.time()
+        slots[slot_time] = tables  # Initially, all tables are available
+        current_time += timedelta(minutes=interval)
+
+    # Adjust availability based on reservations
+    for reservation in reservations:
+        reserved_time = reservation.time
+        reserved_end_time = (datetime.combine(date, reserved_time) +
+                             timedelta(hours=reservation.duration)).time()
+
+        for slot_time in slots.keys():
+            if reserved_time <= slot_time < reserved_end_time:
+                slots[slot_time] -= 1
+
+    return slots
+
+#route to get available timeslots API
+@app.route("/get_available_slots/<date>", methods=["GET"])
+def get_available_slots_api(date):
+    """
+    Fetch available slots for a given date.
+    
+    Args:
+        date (str): Date in YYYY-MM-DD format.
+    
+    Returns:
+        json: Available slots and their availability count.
+    """
+    try:
+        date_obj = datetime.strptime(date, "%Y-%m-%d").date()
+    except ValueError:
+        return jsonify({"error": "Invalid date format"}), 400
+
+    available_slots = get_available_slots(date_obj)
+    return jsonify(available_slots)
+
 
 # route for reservations
 @app.route("/reservations", methods=["GET", "POST"])
@@ -122,6 +184,10 @@ def reservations():
 
     # if form is valid open a database session
     db_session = SessionLocal()
+    available_slots = get_available_slots(form.date.data)
+
+    if available_slots.get(datetime.strptime(form.time.data, "%H:%M").time(), 0) <= 0:
+        return jsonify({"message": "Selected time slot is no longer available.", "is_valid":False})
 
     # Create and save reservation
     reservation = Reservation(
@@ -129,6 +195,7 @@ def reservations():
         email=form.email.data,
         num_people=form.num_people.data,
         date=form.date.data,
+        time=form.tiime.data,
     )
     db_session.add(reservation)
     db_session.commit()

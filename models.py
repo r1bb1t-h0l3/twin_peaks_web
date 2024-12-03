@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Mapped, mapped_column, declarative_base
-from sqlalchemy import String, Integer, Date, DateTime
+from sqlalchemy import String, Integer, Date, DateTime, Time
 from datetime import datetime, timezone
 from datetime import date as dt_date
+from datetime import time as dt_time
 
 Base = declarative_base()
 
@@ -28,6 +29,8 @@ class Reservation(Base):
     email: Mapped[str] = mapped_column(String(120), nullable=False)
     num_people: Mapped[int] = mapped_column(nullable=False)
     date: Mapped[dt_date] = mapped_column(Date, nullable=False)
+    time: Mapped[dt_time] = mapped_column(Time, nullable=False)
+    duration: Mapped[int] = mapped_column(Integer, default=1)
     created_at: Mapped[datetime] = mapped_column(
         DateTime, default=lambda: datetime.now(timezone.utc)
     )
