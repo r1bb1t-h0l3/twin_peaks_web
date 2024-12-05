@@ -5,32 +5,40 @@ from app import (
     app,
     Reservation,
     SessionLocal,
+    get_available_slots
 )  # Import necessary components such as flask app and database
 from forms import ReservationForm
 from database import SessionLocal, initialize_db
 from sqlalchemy.sql import text
 from datetime import datetime
+from unittest.mock import MagicMock, patch
+from datetime import datetime, time
+
 
 
 @pytest.fixture
 def client():
     """
     Pytest fixture to create a test client for the Flask application.
+    It initializes a temporary SQLite database for testing.
     """
+    # Configure the app for testing
     app.config["TESTING"] = True
     app.config["WTF_CSRF_ENABLED"] = False
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test_reservations.db"
-    test_client = app.test_client()
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"  # Use in-memory DB
+    app.config["SECRET_KEY"] = "test"
 
-    # Initialize test database
-    initialize_db()
+    with app.test_client() as client:
+        with app.app_context():
+            # Initialize test database
+            initialize_db()
 
-    yield test_client
+            yield client  # Provide the test client to the tests
 
-    # Clean up database after tests
-    with SessionLocal() as session:
-        session.execute(text("DROP TABLE IF EXISTS reservation"))
-        session.commit()
+            # Cleanup: Drop all tables
+            with SessionLocal() as session:
+                session.execute(text("DROP TABLE IF EXISTS reservations"))
+                session.commit()
 
 
 def test_home_page(client):
@@ -70,29 +78,6 @@ def test_reservations_page_get(client):
     response = client.get("/reservations")
     assert response.status_code == 200
     assert b"Reserve Table" in response.data  # Check the form's submit button text
-
-
-def test_reservations_page_post_valid_data(client):
-    """
-    Test submitting valid reservation data via POST.
-    """
-    valid_data = {
-        "name": "John Doe",
-        "email": "john.doe@example.com",
-        "num_people": 4,
-        "date": "2024-12-01",
-    }
-    
-    response = client.post(
-        "/reservations",
-        data=valid_data,
-        content_type="multipart/form-data",  # Simulate form submission
-    )
-
-    print(response.data)
-
-    assert response.status_code == 200
-    assert b"Your reservation for" in response.data  # Check for success message
 
 
 def test_reservations_page_post_invalid_email(client):
@@ -150,28 +135,72 @@ def test_contact_page(client):
     assert b"Address: 135 W North Bend Way, North Bend, Washington"
 
 
-def test_database_interaction(client):
-    """
-    Test that a reservation is correctly added to the database.
-    """
-    with app.app_context():
-        session = SessionLocal()
-        new_reservation = Reservation(
-            name="Alice Example",
-            email="alice@example.com",
-            num_people=3,
-            date=datetime.strptime("2024-12-10", "%Y-%m-%d").date(),
-        )
-        session.add(new_reservation)
-        session.commit()
+@patch("app.SessionLocal")
+def test_get_available_slots(mock_session):
+    # Mock database session
+    mock_db_session = MagicMock()
+    mock_session.return_value = mock_db_session
 
-        # Query the database
-        reservation = (
-            session.query(Reservation).filter_by(email="alice@example.com").first()
-        )
-        assert reservation is not None
-        assert reservation.name == "Alice Example"
-        assert reservation.num_people == 3
-        assert reservation.email == "alice@example.com"
-        assert reservation.date == datetime.strptime("2024-12-10", "%Y-%m-%d").date()
-        session.close()
+    # Mock reservations
+    mock_reservations = [
+        MagicMock(date=datetime(2024, 12, 5).date(), time=time(17, 0), duration=1),
+        MagicMock(date=datetime(2024, 12, 5).date(), time=time(17, 30), duration=1),
+    ]
+    mock_db_session.query.return_value.filter.return_value.all.return_value = mock_reservations
+
+    # Call the function
+    date_to_test = datetime(2024, 12, 5)
+    slots = get_available_slots(date_to_test)
+
+    # Assertions
+    assert slots[time(17, 0)] == 5  # Decremented once
+    assert slots[time(17, 30)] == 4  # Decremented twice
+    assert slots[time(18, 0)] == 5  # Decremented once
+    assert slots[time(18, 30)] == 6  # Not decremented
+
+@patch("app.get_available_slots")
+def test_get_available_slots_api(mock_get_slots, client):
+    # Mock available slots
+    mock_slots = {time(17, 0): 5, time(17, 30): 6}
+    mock_get_slots.return_value = mock_slots
+
+    # Make the request
+    response = client.get("/get_available_slots/2024-12-05?time=17:00")
+
+    # Parse the response
+    data = response.get_json()
+
+    # Assertions
+    assert response.status_code == 200
+    assert data["17:00"] == 5
+
+@patch("app.get_available_slots")
+@patch("app.SessionLocal")
+def test_reservations_post(mock_session, mock_get_slots, client):
+    # Mock database session
+    mock_db_session = MagicMock()
+    mock_session.return_value = mock_db_session
+
+    # Mock available slots
+    mock_slots = {datetime.strptime("17:00", "%H:%M").time(): 5}
+    mock_get_slots.return_value = mock_slots
+
+    # Mock form data
+    form_data = {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "num_people": 2,
+        "date": "2024-12-05",
+        "time": "17:00",
+    }
+
+    # Make the POST request
+    response = client.post("/reservations", data=form_data)
+
+    # Assertions
+    assert response.status_code == 200
+    response_data = response.get_json()
+    assert response_data["is_valid"] is True
+    assert "successfully added" in response_data["message"]
+    mock_db_session.add.assert_called_once()  # Ensure reservation was added
+    mock_db_session.commit.assert_called_once()  # Ensure commit was called

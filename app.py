@@ -85,15 +85,21 @@ def about_us():
 #route to get available timeslots from db
 def get_available_slots(date, tables=6, interval=30):
     """
-    Get available time slots for a given date.
-    
+    Calculate the available time slots for reservations on a given date.
+
+    This function generates time slots for the restaurant's operating hours 
+    and adjusts their availability based on existing reservations. Each slot 
+    represents a specific time interval (e.g., 30 minutes), and the number of 
+    available tables per slot is updated based on overlapping reservations.
+
     Args:
-        date (date): The date to check availability.
-        tables (int): Number of tables in the restaurant.
-        interval (int): Interval in minutes between reservations (e.g., 30).
-    
+        date (datetime): The specific date to check availability for reservations.
+        tables (int): The total number of tables available in the restaurant. Default is 6.
+        interval (int): The duration of each time slot in minutes (e.g., 30 minutes). Default is 30.
+
     Returns:
-        dict: Available time slots with the number of free tables per slot.
+        dict: A dictionary where keys are time slots (as `datetime.time` objects) 
+              and values are the number of available tables for each slot.
     """
     print(f"looking for date {date}")
     # Example: Querying reservations for a specific date and time
@@ -154,13 +160,38 @@ def get_available_slots(date, tables=6, interval=30):
 @app.route("/get_available_slots/<date_str>", methods=["GET"])
 def get_available_slots_api(date_str):
     """
-    Fetch available slots for a given date.
-    
+    API endpoint to fetch available reservation slots for a specific date.
+
+    This endpoint returns all available time slots for a given date, or a specific count 
+    for a requested time slot if a `time` query parameter is provided. The available slots 
+    are calculated based on the restaurant's capacity and existing reservations.
+
     Args:
-        date (str): Date in YYYY-MM-DD format.
-    
+        date_str (str): A date string in the format "YYYY-MM-DD" representing the date 
+                        to fetch the available slots for.
+
+    Query Parameters:
+        time (str, optional): A specific time in "HH:MM" format. If provided, the API 
+                              will return the count of available tables for that specific time slot.
+
     Returns:
-        json: Available slots and their availability count.
+        json: 
+            If `time` query parameter is provided:
+                {
+                    "<time_str>": <number_of_available_tables>
+                }
+            If `time` is not provided:
+                {
+                    "slots": [
+                        "<time_slot_1>",
+                        "<time_slot_2>",
+                        ...
+                    ]
+                }
+
+    Example Usage:
+        GET /get_available_slots/2024-12-05 -> Returns all available time slots for 2024-12-05.
+        GET /get_available_slots/2024-12-05?time=17:00 -> Returns available table count for 17:00 on 2024-12-05.
     """
     time_str = request.args.get("time") # Optional timeslot filter
     date = datetime.strptime(date_str, "%Y-%m-%d")
@@ -185,16 +216,49 @@ def get_available_slots_api(date_str):
 @app.route("/reservations", methods=["GET", "POST"])
 def reservations():
     """
-    Handle the reservations page.
+    Handle the reservations page, supporting both GET and POST requests.
 
-    Handles both GET and POST requests:
-    - GET: Renders the reservations form.
-    - POST: Validates and processes the reservation form data, saves it to the database,
-      and returns a success or error message as JSON.
+    - **GET Request**: Renders the reservations form and dynamically populates the 
+      time slot options based on available slots for the selected date.
+
+    - **POST Request**: 
+        - Validates the submitted reservation form data.
+        - Saves the reservation details in the database if the form is valid.
+        - Returns a JSON response indicating success or error.
+
+    Form Fields:
+        - `name`: Name of the customer (string).
+        - `email`: Email address of the customer (string).
+        - `num_people`: Number of people for the reservation (integer).
+        - `date`: Date of the reservation (date).
+        - `time`: Time slot for the reservation (select field with available times).
 
     Returns:
-        - Rendered HTML template for the reservations page (GET).
-        - JSON response with success or error messages (POST).
+        - On GET: Rendered HTML template (`reservations.html`) containing the reservation form.
+        - On POST:
+            - **Success**: JSON response with a success message and reservation details.
+            - **Failure**: JSON response with validation errors and a failure message.
+
+    Example POST Success Response:
+        {
+            "message": "John Doe your reservation for 2 people on 2024-12-05 at 17:00 has been successfully added. If any issues arise, we will contact you at john.doe@example.com.",
+            "is_valid": True
+        }
+
+    Example POST Failure Response:
+        {
+            "message": "Invalid form data. Please correct and try again.",
+            "errors": {
+                "email": "Invalid email address."
+            },
+            "is_valid": False
+        }
+
+    Notes:
+        - The time slot options are dynamically updated based on the availability 
+          retrieved via the `get_available_slots` function.
+        - Uses Flask-WTF for form validation.
+        - Commits valid reservations to the `reservations` database table.
     """
     global cached_slots
     # Create form object
