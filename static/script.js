@@ -20,6 +20,24 @@ document.addEventListener("mouseleave", () => {
 });
 
 //--------------------------------------------------------//
+// Timeslot AJAX
+document.getElementById("date").addEventListener("change", function () {
+  const selectedDate = this.value;
+  fetch(`/get_available_slots/${selectedDate}`)
+    .then(response => response.json())
+    .then(data => {
+      const timeSelect = document.getElementById("time");
+      timeSelect.innerHTML = ""; // clear current options
+      data.slots.forEach(slot => {
+        const option = document.createElement("option");
+        option.value = slot;
+        option.textContent = slot;
+        timeSelect.appendChild(option);
+      });
+    });
+});
+
+//--------------------------------------------------------//
 
 //Reservation Form AJAX Submission
 document.getElementById("reservationForm").addEventListener("submit", async (e) => {
@@ -49,11 +67,13 @@ document.getElementById("reservationForm").addEventListener("submit", async (e) 
   } else {
     // Display success message
     const confirmationMessage = document.getElementById("confirmationMessage");
-    confirmationMessage.style.color = "green";
+    confirmationMessage.style.display = "block";
     confirmationMessage.innerText = data.message;
-    confirmationMessage.style.color = "green";
+    confirmationMessage.style.color = "155724";
 
     // Optionally clear the form fields
     document.getElementById("reservationForm").reset();
   }
 });
+//--------------------------------------------------------//
+// Timeslot AJAX

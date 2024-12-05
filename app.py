@@ -9,10 +9,12 @@ from flask import (
 from forms import ReservationForm
 from models import Reservation
 from database import SessionLocal
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
 import os
 
 app = Flask(__name__, instance_relative_config=True)
+
+cached_slots = None
 
 app.config["SECRET_KEY"] = "my_secret_key"  # for CSRF protection
 # Configure the SQLite database
@@ -92,8 +94,12 @@ def get_available_slots(date, tables=6, interval=30):
     Returns:
         dict: Available time slots with the number of free tables per slot.
     """
+    print(f"looking for date {date}")
+    
     db_session = SessionLocal()
-    reservations = db_session.query(Reservation).filter(Reservation.date == date).all()
+    reservations = db_session.query(Reservation)
+    reservations = reservations.filter(Reservation.date == date)
+    reservations = reservations.all()
     db_session.close()
 
     # Generate time slots
@@ -121,8 +127,8 @@ def get_available_slots(date, tables=6, interval=30):
     return slots
 
 #route to get available timeslots API
-@app.route("/get_available_slots/<date>", methods=["GET"])
-def get_available_slots_api(date):
+@app.route("/get_available_slots/<date_str>", methods=["GET"])
+def get_available_slots_api(date_str):
     """
     Fetch available slots for a given date.
     
@@ -132,14 +138,15 @@ def get_available_slots_api(date):
     Returns:
         json: Available slots and their availability count.
     """
-    try:
-        date_obj = datetime.strptime(date, "%Y-%m-%d").date()
-    except ValueError:
-        return jsonify({"error": "Invalid date format"}), 400
+    global cached_slots
+    date = datetime.strptime(date_str, "%Y-%m-%d")
+    slots = get_available_slots(date) 
+    slots_serializable = [key.strftime("%H:%M") for key, value in slots.items()]
+    # result = {"slots": available_slots}
 
-    available_slots = get_available_slots(date_obj)
-    return jsonify(available_slots)
+    cached_slots = [key for key, value in slots.items() if value > 0]
 
+    return jsonify({"slots": slots_serializable})
 
 # route for reservations
 @app.route("/reservations", methods=["GET", "POST"])
@@ -156,59 +163,71 @@ def reservations():
         - Rendered HTML template for the reservations page (GET).
         - JSON response with success or error messages (POST).
     """
-    # create form object
+    global cached_slots
+    # Create form object
     form = ReservationForm(form=request.form)
 
     # Log type of request
-    if request.method == "GET":
-        print("GET request received")
+    if request.method == "POST":
+        print("POST request received")
         # handle GET request
-        return render_template("reservations.html", form=form)
+        # return render_template("reservations.html", form=form)
 
-    print("POST request received")
+        print("POST request received")
 
-    # handle form submission
-    if not form.validate_on_submit():  # POST request with valid form data
-        # Collect error messages for invalid fields
-        error_messages = {
-            field_name: error_list[0] 
-            for field_name, error_list in form.errors.items()
-        }
+        # handle form submission
+        if not form.validate_on_submit():  # POST request with invalid form data
+            # Collect error messages for invalid fields
+            error_messages = {
+                field_name: error_list[0] 
+                for field_name, error_list in form.errors.items()
+            }
+            return jsonify(
+                {
+                    "message": "Invalid form data. Please correct and try again.",
+                    "errors": error_messages,
+                    "is_valid": False
+                }
+            )
+
+        selected_time = datetime.strptime(form.time.data, "%H:%M").time()
+        # If form is valid open a database session
+        db_session = SessionLocal()
+
+        # Create and save reservation
+        reservation = Reservation(
+            name=form.name.data,
+            email=form.email.data,
+            num_people=form.num_people.data,
+            date=form.date.data,
+            time=selected_time,
+        )
+        db_session.add(reservation)
+        db_session.commit()
+        db_session.close()  # close session after committing
+
+        # Send success message as JSON
         return jsonify(
             {
-                "message": "Invalid form data. Please correct and try again.",
-                "errors": error_messages,
-                "is_valid": False
+                "message": f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
+                f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}.",
+                "is_valid": True,
             }
         )
 
-    # if form is valid open a database session
-    db_session = SessionLocal()
-    available_slots = get_available_slots(form.date.data)
+    # Handle GET request or form validation failure
+    print("GET request received")
 
-    if available_slots.get(datetime.strptime(form.time.data, "%H:%M").time(), 0) <= 0:
-        return jsonify({"message": "Selected time slot is no longer available.", "is_valid":False})
+    # Dynamically populate time choices if a date is selected
+    if form.date.data:  # If a date is selected, fetch available slots
+        slots = get_available_slots(form.date.data)
+        available_slots = [key.strftime("%H:%M") for key, value in slots.items() if value > 0]
+        form.time.choices = [(slot, slot) for slot in available_slots]
+    else:
+        form.time.choices = []  # No slots available yet
 
-    # Create and save reservation
-    reservation = Reservation(
-        name=form.name.data,
-        email=form.email.data,
-        num_people=form.num_people.data,
-        date=form.date.data,
-        time=form.tiime.data,
-    )
-    db_session.add(reservation)
-    db_session.commit()
-    db_session.close()  # close session after committing
-
-    # flash success message
-    return jsonify(
-        {
-            "message": f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
-            f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}.",
-            "is_valid": True,
-        }
-    )
+    # Render the reservations page
+    return render_template("reservations.html", form=form)
 
 
 # route for contacts

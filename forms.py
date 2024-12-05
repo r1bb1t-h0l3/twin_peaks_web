@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, DateField, SubmitField
+from wtforms import StringField, IntegerField, DateField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Email, NumberRange
+from datetime import time
 
 
 # Define form model
@@ -29,4 +30,5 @@ class ReservationForm(FlaskForm):
         format="%Y-%m-%d",
         render_kw={"placeholder": "1990-04-08"},
     )
+    time = SelectField("Time", validators=[DataRequired()], coerce=str, choices=[], validate_choice=False, render_kw={"placeholder": "Select a time"})
     submit = SubmitField("Reserve Table")
