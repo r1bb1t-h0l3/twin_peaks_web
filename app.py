@@ -10,11 +10,12 @@ from forms import ReservationForm
 from models import Reservation
 from database import SessionLocal
 from datetime import datetime, timedelta, time
+from sqlalchemy import func
 import os
+import logging
+
 
 app = Flask(__name__, instance_relative_config=True)
-
-cached_slots = None
 
 app.config["SECRET_KEY"] = "my_secret_key"  # for CSRF protection
 # Configure the SQLite database
@@ -95,12 +96,23 @@ def get_available_slots(date, tables=6, interval=30):
         dict: Available time slots with the number of free tables per slot.
     """
     print(f"looking for date {date}")
+    # Example: Querying reservations for a specific date and time
     
     db_session = SessionLocal()
+
     reservations = db_session.query(Reservation)
-    reservations = reservations.filter(Reservation.date == date)
+    reservations = reservations.filter(Reservation.date == date.date())
     reservations = reservations.all()
-    db_session.close()
+
+
+    print(f"Reservations on {date}: {[r.id for r in reservations]}")
+    for reservation in db_session.query(Reservation).all():
+        print(f"Reservation Date in DB: {reservation.date},(type: {type(reservation.date)})")
+        print(f"Input Date: {date} (type: {type(date)})")
+
+
+    for reservation in reservations:
+        print(f"Reservation ID: {reservation.id}, Time: {reservation.time}, Duration: {reservation.duration}")
 
     # Generate time slots
     opening_time = datetime.strptime("17:00", "%H:%M").time()  # 5:00 PM
@@ -116,14 +128,21 @@ def get_available_slots(date, tables=6, interval=30):
 
     # Adjust availability based on reservations
     for reservation in reservations:
-        reserved_time = reservation.time
-        reserved_end_time = (datetime.combine(date, reserved_time) +
-                             timedelta(hours=reservation.duration)).time()
-
-        for slot_time in slots.keys():
-            if reserved_time <= slot_time < reserved_end_time:
-                slots[slot_time] -= 1
-
+        reserved_time = reservation.time.replace(microsecond=0, second=0)  # Normalize time
+        print(f"Normalized reserved time: {reserved_time}")
+        
+        #Decrement only for exact timeslot
+        print(f"Checking reservation: {reservation}")
+        print(f"Reserved time: {reserved_time}, Slot time: {slots.keys()}")
+        if reserved_time in slots:
+            slots[reserved_time] -= 1
+            print(f"Decremented slot {reserved_time}: {slots[reserved_time]}")
+        else:
+            print(f"Reservation time {reserved_time} not in slots")
+    
+    # remove fully booked slots
+    slots = {slot: count for slot, count in slots.items() if count > 0}
+    print(f"Final computed slots: {slots}")
     return slots
 
 #route to get available timeslots API
@@ -138,14 +157,24 @@ def get_available_slots_api(date_str):
     Returns:
         json: Available slots and their availability count.
     """
-    global cached_slots
+    time_str = request.args.get("time") # Optional timeslot filter
     date = datetime.strptime(date_str, "%Y-%m-%d")
     slots = get_available_slots(date) 
-    slots_serializable = [key.strftime("%H:%M") for key, value in slots.items()]
+    
 
-    cached_slots = [key for key, value in slots.items() if value > 0]
+    if time_str:
+        # Filter for specific time if provided
+        specific_time = datetime.strptime(time_str, "%H:%M").time()
+        count = slots.get(specific_time, 0)
+        print(f"Specific time: {specific_time}, Count: {count}")
+        return jsonify({time_str: count})
+    else:
+        print("Slots fetched successfully!") # Debug print
+        app.logger.info(f"Slots fetched: {slots}")
+        slots_serializable = [key.strftime("%H:%M") for key, value in slots.items()]
 
-    return jsonify({"slots": slots_serializable})
+
+        return jsonify({"slots": slots_serializable})
 
 # route for reservations
 @app.route("/reservations", methods=["GET", "POST"])
