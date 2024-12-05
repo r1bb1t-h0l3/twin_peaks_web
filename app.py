@@ -142,7 +142,6 @@ def get_available_slots_api(date_str):
     date = datetime.strptime(date_str, "%Y-%m-%d")
     slots = get_available_slots(date) 
     slots_serializable = [key.strftime("%H:%M") for key, value in slots.items()]
-    # result = {"slots": available_slots}
 
     cached_slots = [key for key, value in slots.items() if value > 0]
 
@@ -209,8 +208,8 @@ def reservations():
         # Send success message as JSON
         return jsonify(
             {
-                "message": f"Your reservation for {form.num_people.data} people on {form.date.data} has been "
-                f"successfully added {form.name.data}. If any issues arise, we will contact you at {form.email.data}.",
+                "message": f"{form.name.data} your reservation for {form.num_people.data} people on {form.date.data} at {form.time.data} has been "
+                f"successfully added. If any issues arise, we will contact you at {form.email.data}.",
                 "is_valid": True,
             }
         )
