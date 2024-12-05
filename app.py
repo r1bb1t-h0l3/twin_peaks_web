@@ -129,16 +129,21 @@ def get_available_slots(date, tables=6, interval=30):
     # Adjust availability based on reservations
     for reservation in reservations:
         reserved_time = reservation.time.replace(microsecond=0, second=0)  # Normalize time
-        print(f"Normalized reserved time: {reserved_time}")
-        
-        #Decrement only for exact timeslot
-        print(f"Checking reservation: {reservation}")
-        print(f"Reserved time: {reserved_time}, Slot time: {slots.keys()}")
-        if reserved_time in slots:
-            slots[reserved_time] -= 1
-            print(f"Decremented slot {reserved_time}: {slots[reserved_time]}")
-        else:
-            print(f"Reservation time {reserved_time} not in slots")
+        reserved_duration = reservation.duration or 1  # Default to 1 hour if no duration is specified
+        reserved_end_time = (datetime.combine(date.date(), reserved_time) +
+                             timedelta(hours=reserved_duration)).time()
+
+        print(f"Reservation blocks from {reserved_time} to {reserved_end_time}")
+
+        for slot_time in list(slots.keys()):  # Use list to safely modify dict
+            # Check if the slot falls within the reservation period
+            if reserved_time <= slot_time < reserved_end_time:
+                if slots[slot_time] > 0:
+                    print(f"Decrementing slot {slot_time} for reservation at {reserved_time}")
+                    slots[slot_time] -= 1
+                else:
+                    print(f"No available tables left for slot {slot_time}")
+
     
     # remove fully booked slots
     slots = {slot: count for slot, count in slots.items() if count > 0}
